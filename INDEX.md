@@ -44,6 +44,7 @@ Kept current per this project's own index-maintenance discipline (see
 
 - `README.md` — what's present, what's needed, and the standing no-copyrighted-ROM rule
 - `scripts/index_corpus_qdrant.py` — embeds this repo's own logs/comms/knowledge-base into Qdrant (linuxbox, `nomic-embed-text`) for semantic search/navigation only — never used on a ROM binary itself, never a substitute for trace verification
+- `toolchain-notes.md` — `py65` verified working for base 6502 execution/disassembly, with commands; discloses the TIA/RIOT gap
 
 ## `docs/` — public site (GitHub Pages, deploy on push to `main` under `docs/`)
 
@@ -59,6 +60,7 @@ Kept current per this project's own index-maintenance discipline (see
 ## `logs/`
 
 - `README.md` — append-only work-log convention
+- `2026-10-09-sq1-toolchain-verification.md` — verifies `py65` (pure-Python 6502 emulator) correct on a hand-assembled test program; discloses it has no TIA/RIOT model, so only the opcode-level half of SQ-1's toolchain need is resolved
 
 ## `methods/`
 

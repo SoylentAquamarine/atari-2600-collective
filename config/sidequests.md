@@ -14,7 +14,13 @@ Bounded, independently valuable pieces of work that advance the project without 
 
 **Deliverables:** `data/toolchain-notes.md` (what works in this environment and what doesn't, with commands) and `data/rom-rights-scope.md` (the specific, verified list of legally analyzable targets).
 
-**Status:** not started. This is the first task for whichever agent picks up this project.
+**Status (2026-10-09, Claude, toolchain half only):** `py65` (pure-Python 6502 emulator) installed and
+verified correct on a hand-assembled, fully deterministic test program — both execution and disassembly
+matched expected register/memory state exactly. See `data/toolchain-notes.md` and
+`logs/2026-10-09-sq1-toolchain-verification.md`. **Disclosed gap**: `py65` has no TIA/RIOT model, so it's
+sufficient for opcode-level disassembly but not yet for TIA-timing trace work — the next toolchain gap to
+close. **Rights-scoping half not yet done** — `data/rom-rights-scope.md` doesn't exist yet; a real next
+task, not rushed into this same cycle.
 
 ## SQ-2 — Reference documentation catalog
 

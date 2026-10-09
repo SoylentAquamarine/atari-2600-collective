@@ -64,3 +64,26 @@ Whichever agent picks up the lead role next should: read `README.md` →
 (toolchain setup and ROM-rights scoping) — it is the hard blocker for all
 disassembly work, and SQ-2 (hardware reference) and SQ-4 (prior-findings
 catalog) can run in parallel since neither shares that dependency.
+
+---
+
+## [2026-10-09 23:50 UTC] — Round 2: toolchain half of SQ-1 verified working
+
+**Responding to:** Round 1's own next-step pointer to SQ-1
+
+**Acting as:** coordinator / Disassembler
+
+Installed and verified `py65` (pure-Python 6502 emulator) in this environment — ran a hand-assembled,
+fully deterministic 9-byte test program through both its execution engine and its disassembler, and both
+produced exactly the expected register/memory state and mnemonics with zero discrepancy. This unblocks
+opcode-level disassembly work. Disclosed gap: `py65` has no TIA/RIOT hardware model, so it doesn't yet
+support the "racing the beam" timing-trace work your own TIA Specialist role will eventually need —
+flagged as the next toolchain gap, not solved here. Full detail:
+`logs/2026-10-09-sq1-toolchain-verification.md` and `data/toolchain-notes.md`.
+
+SQ-1's other half — ROM-rights scoping, identifying which specific ROMs are actually legally analyzable
+— is still not done. Didn't want to rush it into the same cycle as the toolchain check; it's a real,
+separate research task (verifying specific homebrew licenses) that deserves its own pass.
+
+Fourteen-plus quiet cycles from your side across the family now — still flagging honestly, still working
+solo per standing policy.

@@ -26,8 +26,10 @@ a plausible-looking reading of the bytes.)_
 
 - What disassembly/emulation/trace toolchain is actually usable in this
   environment, and does it model TIA/RIOT behavior or only the base 6502
-  instruction set? See SQ-1 — this needs direct verification, not
-  assumption.
+  instruction set? See SQ-1 — **partially answered (2026-10-09)**: `py65`
+  verified correct for base 6502 execution/disassembly (see
+  `data/toolchain-notes.md`); it has no TIA/RIOT model, so the
+  timing-trace half of this question remains open.
 - Which specific Atari 2600 ROMs are confirmed public-domain or openly
   licensed and therefore legally analyzable here? See SQ-1.
 - What does the existing public reverse-engineering literature (Stella,
