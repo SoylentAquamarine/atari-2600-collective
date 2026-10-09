@@ -1,0 +1,40 @@
+MIT License
+
+Copyright (c) 2026 Atari 2600 Collective contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+This license covers this repository's own code (disassemblers, analysis
+scripts, memory-map tooling) and written analysis/documentation only.
+
+**It does not cover, and does not grant any rights to, Atari 2600 game ROM
+images.** Atari 2600 ROMs are, in general, still under copyright. This
+project does not host, bulk-distribute, or commit copyrighted ROM binaries
+to this repository under any circumstance. Analysis targets are limited to:
+(a) ROMs in the public domain or released under an explicit open license by
+their rights holder (e.g. published homebrew with a stated open license),
+(b) ROM files the user has supplied from their own legally obtained copies,
+used only for local analysis and never redistributed here, or (c)
+commentary/disassembly of material already extensively documented in the
+public reverse-engineering literature (the Stella project, 6502.org,
+AtariAge's development forums), cited rather than reproduced wholesale. See
+`data/README.md` and `config/claude.md` for the standing rule this repeats
+on every session start.

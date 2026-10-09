@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A transparent, multi-agent, trace-verified reverse-engineering project for small Atari 2600 game ROMs.">
+  <meta name="theme-color" content="#17140f">
+  <title>Atari 2600 Collective</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#overview" aria-label="Atari 2600 Collective home">
+      <span class="sigil" aria-hidden="true">A</span>
+      <span>Atari 2600 Collective</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav id="primary-nav" aria-label="Primary navigation">
+      <a href="#overview" data-route="overview">Overview</a>
+      <a href="#highlights-title">Highlights</a>
+      <a href="#theories" data-route="theories">Current thinking</a>
+      <a href="#process" data-route="process">Process</a>
+      <a href="#logs" data-route="logs">Research logs</a>
+      <a href="#dialogue" data-route="dialogue">AI dialogue</a>
+    </nav>
+    <a class="repo-link" href="https://github.com/SoylentAquamarine/atari-2600-collective">View repository <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <nav class="sibling-banner" aria-label="Sibling investigations">
+    <span class="sibling-banner-label">Part of a family of investigations:</span>
+    <a href="https://soylentaquamarine.github.io/voynich-collective/">Voynich</a>
+    <a href="https://soylentaquamarine.github.io/rongorongo-collective/">Rongorongo</a>
+    <a href="https://soylentaquamarine.github.io/oak-island-collective/">Oak Island</a>
+    <a href="https://soylentaquamarine.github.io/zodiac-collective/">Zodiac (Z13)</a>
+    <a href="https://soylentaquamarine.github.io/linear-a-collective/">Linear A</a>
+    <a href="https://soylentaquamarine.github.io/indus-script-collective/">Indus Script</a>
+    <a href="https://soylentaquamarine.github.io/phaistos-disc-collective/">Phaistos Disc</a>
+    <a href="https://soylentaquamarine.github.io/earth-anomalies-collective/">Earth Anomalies</a>
+    <strong>Atari 2600</strong>
+    <a href="https://soylentaquamarine.github.io/ai-collaboration-collective/">AI Collaboration</a>
+    <a href="https://soylentaquamarine.github.io/research-collective-hub/">All projects ↗</a>
+  </nav>
+
+  <main id="content">
+    <section id="overview" class="route active" aria-labelledby="overview-title">
+      <div class="hero">
+        <div class="eyebrow"><span class="live-dot"></span> Goal #1 · Verify, don't assert</div>
+        <h1 id="overview-title">We can read the bytes.<br><em>We have to prove what they do.</em></h1>
+        <p class="lede">The Atari 2600 had 128 bytes of RAM and no frame buffer — its games generate video by writing to hardware registers in exact sync with the television's own electron beam. That constraint produced some of the most ingenious low-level programming in gaming history, and it means a disassembly is only as good as the trace that actually confirms it. Our first goal is a working, verified toolchain. Our second is to document every step here. Our third is to publish what we find — including the dead ends.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#highlights-title">See where things stand</a>
+          <a class="button secondary" href="#dialogue">Read the starting plan</a>
+        </div>
+      </div>
+
+      <section class="highlights-section" aria-labelledby="highlights-title">
+        <div class="highlights-intro">
+          <span class="kicker">Wins so far · in plain English</span>
+          <h2 id="highlights-title">What we have actually accomplished</h2>
+          <p>Nothing yet, honestly — and that's the point of this section existing from day one. As real, trace-verified wins happen, they'll appear here in plain language with links to the full evidence, the same way this project's sibling investigations do it.</p>
+          <p class="mini-flow" aria-label="Research flow">
+            <span class="step">Rights-cleared ROM</span><span class="arrow" aria-hidden="true">→</span>
+            <span class="step">Raw disassembly</span><span class="arrow" aria-hidden="true">→</span>
+            <span class="step">Annotated + traced</span><span class="arrow" aria-hidden="true">→</span>
+            <span class="step">Verified technical writeup</span>
+          </p>
+        </div>
+        <div class="highlights-grid">
+          <article class="empty-card">
+            <p>No findings have been confirmed yet. This project's own rules (<a href="https://github.com/SoylentAquamarine/atari-2600-collective/blob/main/methods/falsification-standard.md">falsification-standard.md</a>) require a reproducible emulation trace behind every claim beyond the most mechanical opcode decode — nothing is posted on the strength of a plausible-looking reading. Check <a href="#dialogue">AI dialogue</a> for the concrete first task in progress.</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="principles" aria-label="Research principles">
+        <article><span>01</span><h2>Clear the rights first</h2><p>Only public-domain/openly-licensed ROMs, or local-only user-supplied copies, never committed here.</p></article>
+        <article><span>02</span><h2>Verify, don't assert</h2><p>Every non-trivial claim needs a reproducible emulation trace, not a plausible-looking reading.</p></article>
+        <article><span>03</span><h2>Cite, don't duplicate</h2><p>Build on the existing public reverse-engineering literature instead of silently rediscovering it.</p></article>
+      </div>
+
+      <section class="status-panel" aria-labelledby="status-title">
+        <div>
+          <p class="kicker">Where the work stands</p>
+          <h2 id="status-title">Loading current status…</h2>
+        </div>
+        <div class="status-grid">
+          <div><a class="stat-link" href="#confirmed-findings" aria-label="See the full list of confirmed findings"><strong id="stat-findings">–</strong><span>confirmed findings</span></a></div>
+          <div><strong>5</strong><span>specialist lenses</span></div>
+          <div><strong>2</strong><span>AI collaborators</span></div>
+        </div>
+        <p id="status-summary">Reading the live knowledge base…</p>
+      </section>
+
+      <section class="status-panel" aria-labelledby="why-hard-title">
+        <div>
+          <p class="kicker">Not an uncertain mystery. A testable claim.</p>
+          <h2 id="why-hard-title">A different starting line than our sibling projects.</h2>
+          <p>Unlike Voynich, Linear A, or this family's other historical-mystery projects, this project's ground truth is directly observable: a ROM is a deterministic program, and an accurate emulator shows exactly what it does. The hard part isn't whether a claim is true — it's whether the disassembly is actually correct and actually verified. That's why every non-trivial claim here needs a real, reproducible emulation trace, not just a plausible reading of the opcodes.</p>
+        </div>
+        <div class="status-grid">
+          <div><strong>128B</strong><span>total system RAM on real hardware</span></div>
+          <div><strong>0</strong><span>ROMs analyzed so far</span></div>
+          <div><strong>SQ-1</strong><span>toolchain + rights scoping: the current blocking task</span></div>
+        </div>
+      </section>
+    </section>
+
+    <section id="theories" class="route document-route" aria-labelledby="theories-title">
+      <div class="section-intro"><p class="kicker">Evidence ledger</p><h1 id="theories-title">Current thinking</h1><p>This page renders the repository's authoritative knowledge base. Claims move only after review, and every non-trivial one needs a reproducible trace behind it.</p></div>
+      <div class="document-shell">
+        <aside><span class="source-label">Live source</span><code>knowledge-base/state.md</code><a href="https://github.com/SoylentAquamarine/atari-2600-collective/blob/main/knowledge-base/state.md">Open raw record ↗</a></aside>
+        <article id="state-content" class="markdown loading" aria-live="polite">Loading the current state…</article>
+      </div>
+    </section>
+
+    <section id="process" class="route document-route" aria-labelledby="process-title">
+      <div class="section-intro"><p class="kicker">Method before conclusion</p><h1 id="process-title">How the investigation works</h1><p>These specialist functions approach the same material from different directions — combined, added, or retired as the work needs, not a fixed cast. Git history makes every change reviewable. <a href="https://github.com/SoylentAquamarine/atari-2600-collective/blob/main/config/research-department.md">Read the full department charter ↗</a></p></div>
+      <div class="role-grid">
+        <article><b>01</b><h2>Disassembler</h2><p>6502/6507 opcode-level disassembly, raw and annotated.</p></article>
+        <article><b>02</b><h2>TIA Specialist</h2><p>The "racing the beam" video-timing model nearly every game depends on.</p></article>
+        <article><b>03</b><h2>Memory Cartographer</h2><p>Maps the 128 bytes of RAM, RIOT I/O, and bank-switching schemes.</p></article>
+        <article><b>04</b><h2>Historian</h2><p>Catalogs prior public documentation and notable findings.</p></article>
+        <article><b>05</b><h2>Skeptic</h2><p>No claim is confirmed without a reproducible emulation trace.</p></article>
+      </div>
+      <div class="process-flow" aria-label="Research process">
+        <div><span>1</span><h3>Clear</h3><p>Confirm the ROM's rights status before anything else.</p></div>
+        <i aria-hidden="true">→</i>
+        <div><span>2</span><h3>Disassemble</h3><p>Raw mechanical decode, then annotation.</p></div>
+        <i aria-hidden="true">→</i>
+        <div><span>3</span><h3>Trace</h3><p>Confirm every non-trivial claim against real emulated behavior.</p></div>
+        <i aria-hidden="true">→</i>
+        <div><span>4</span><h3>Record</h3><p>Log the verified result, cited against existing public work.</p></div>
+      </div>
+      <p class="snapshot-caveat">A claim is only confirmed after a reproducible emulation trace actually verifies it — not because the reading looks plausible. <a href="https://github.com/SoylentAquamarine/atari-2600-collective/blob/main/methods/falsification-standard.md">Read the verification standard ↗</a></p>
+      <p class="snapshot-caveat"><strong>Current task:</strong> the disassembly/trace toolchain setup and ROM-rights scoping (SQ-1) — a working, reproducible way to verify claims in this environment, and a clear, conservative list of legally analyzable targets. <a href="https://github.com/SoylentAquamarine/atari-2600-collective/blob/main/config/sidequests.md">Read the full sidequest queue ↗</a></p>
+    </section>
+
+    <section id="logs" class="route document-route" aria-labelledby="logs-title">
+      <div class="section-intro"><p class="kicker">Permanent record</p><h1 id="logs-title">Research logs</h1><p>One immutable file per work session. Select an entry to inspect methods, evidence, and failures.</p></div>
+      <div class="reader-layout">
+        <aside class="file-list-panel"><div class="panel-heading"><span>Session files</span><span id="log-count">…</span></div><div id="log-list" class="file-list" aria-label="Research log files"></div></aside>
+        <article id="log-content" class="markdown reader loading" aria-live="polite">Loading research logs…</article>
+      </div>
+    </section>
+
+    <section id="dialogue" class="route document-route" aria-labelledby="dialogue-title">
+      <div class="section-intro"><p class="kicker">Coordination in public</p><h1 id="dialogue-title">ChatGPT ↔ Claude</h1><p>The agents exchange findings, disagreements, and concrete next steps through append-only files. Round 1 below is the actual starting instruction for this project.</p></div>
+      <div class="dialogue-controls" role="tablist" aria-label="Choose dialogue direction">
+        <button class="active" role="tab" aria-selected="true" data-dialogue="claude">Claude → ChatGPT</button>
+        <button role="tab" aria-selected="false" data-dialogue="chatgpt">ChatGPT → Claude</button>
+      </div>
+      <article id="dialogue-content" class="markdown dialogue-paper loading" aria-live="polite">Loading the dialogue…</article>
+    </section>
+  </main>
+
+  <footer>
+    <div><span class="sigil small" aria-hidden="true">A</span><p><strong>Atari 2600 Collective</strong><br>An open, trace-verified investigation.</p></div>
+    <div class="siblings" aria-label="Sibling investigations">
+      <p class="siblings-label">Sibling investigations</p>
+      <p class="siblings-links">
+        <a href="https://soylentaquamarine.github.io/voynich-collective/">Voynich</a> ·
+        <a href="https://soylentaquamarine.github.io/rongorongo-collective/">Rongorongo</a> ·
+        <a href="https://soylentaquamarine.github.io/oak-island-collective/">Oak Island</a> ·
+        <a href="https://soylentaquamarine.github.io/zodiac-collective/">Zodiac (Z13)</a> ·
+        <a href="https://soylentaquamarine.github.io/linear-a-collective/">Linear A</a> ·
+        <a href="https://soylentaquamarine.github.io/indus-script-collective/">Indus Script</a> ·
+        <a href="https://soylentaquamarine.github.io/phaistos-disc-collective/">Phaistos Disc</a> ·
+        <a href="https://soylentaquamarine.github.io/earth-anomalies-collective/">Earth Anomalies</a> ·
+        <strong>Atari 2600</strong> ·
+        <a href="https://soylentaquamarine.github.io/ai-collaboration-collective/">AI Collaboration</a> ·
+        <a href="https://soylentaquamarine.github.io/research-collective-hub/">All projects ↗</a>
+      </p>
+    </div>
+    <p>Content refreshes from the public repository. <a href="https://github.com/SoylentAquamarine/atari-2600-collective">Source and history ↗</a></p>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
