@@ -13,18 +13,22 @@ git log of this file — nothing here is ever silently overwritten.
   holder (Carlos Duarte do Nascimento, 2014); confirmed canonical (not a fork). ROM: 2048 bytes, SHA256
   `c85dc2204299b0a29209d3f80ae112678c171dab216719593625647d2436f1e1`. — 2026-10-10,
   `logs/2026-10-10-sq1-rom-rights-scoping.md`.
-- **A raw mechanical disassembly of this ROM from its reset vector (`$F914`) is committed and
-  reproducible**: `data/disassembly/2048-2600/raw-disassembly-from-reset.txt`, produced by `py65`
-  (verified tool, see `data/toolchain-notes.md`). Meets `methods/falsification-standard.md`'s bar for a
-  mechanical opcode-decode claim (committed output, no trace needed at this tier — trace is required only
-  for claims beyond mechanical decode). — 2026-10-10, `logs/2026-10-10-sq3-first-raw-disassembly.md`.
+- **Raw mechanical disassembly of this ROM, two segments, committed and reproducible**: from its reset
+  vector (`$F914`, `data/disassembly/2048-2600/raw-disassembly-from-reset.txt`) and from the real jump
+  target found there (`$F993`, `data/disassembly/2048-2600/raw-disassembly-from-f993.txt`), both produced
+  by `py65` (verified tool, see `data/toolchain-notes.md`). Meets `methods/falsification-standard.md`'s
+  bar for a mechanical opcode-decode claim (committed output, no trace needed at this tier). —
+  2026-10-10, `logs/2026-10-10-sq3-first-raw-disassembly.md` and
+  `logs/2026-10-10-sq3-disassembly-continuation-from-jump-target.md`.
 
 ## ROMs Under Analysis
 
-- **2048-2600** (`chesterbr/2048-2600`) — raw disassembly done (rung 1 of the evidence ladder); annotation
-  and trace verification (rungs 2–3) not yet attempted. A real methodology note on file: linear-sweep
-  disassembly produces garbage past the `JMP $F993` at `$F94A` — future passes should follow control flow,
-  not read straight through.
+- **2048-2600** (`chesterbr/2048-2600`) — raw disassembly extended to two segments (rung 1 of the evidence
+  ladder): the reset-vector startup routine (`$F914`–`$F94A`) and the continuation at the real jump target
+  (`$F993`–`$FA0D`), confirmed clean throughout, supporting last cycle's data-region hypothesis for
+  `$F94D`–`$F992`. Two unconfirmed leads flagged for future annotation: a RIOT I/O touch (`BIT $0282`) and
+  a small lookup table at `$F910`. Another jump found (`$FA06 JMP $F961`) — not yet followed. Annotation
+  and trace verification (rungs 2–3) still not attempted.
 
 ## Verified Disassemblies
 

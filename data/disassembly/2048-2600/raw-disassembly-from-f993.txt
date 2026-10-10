@@ -1,0 +1,65 @@
+; 2048-2600 raw disassembly, continuation from the actual JMP target $F993
+; (the correct continuation after $F94A JMP $F993 -- see prior log for the data-region caveat at $F94D-$F992)
+; ROM sha256: c85dc2204299b0a29209d3f80ae112678c171dab216719593625647d2436f1e1
+; Stops at $FA0D -- another JMP ($FA06 JMP $F961) appears just before this point; do not read linearly past it without re-verifying, same lesson as last cycle.
+
+$F993  LDA #$02
+$F995  STA $00
+$F997  STA $02
+$F999  STA $02
+$F99B  STA $02
+$F99D  LDA #$00
+$F99F  STA $00
+$F9A1  STA $02
+$F9A3  LDX #$00
+$F9A5  LDA #$08
+$F9A7  BIT $0282
+$F9AA  BNE $f9ad
+$F9AC  INX
+$F9AD  LDA $f910,X
+$F9B0  STA $0296
+$F9B3  LDA #$00
+$F9B5  STA $01
+$F9B7  LDA $a8
+$F9B9  CMP #$01
+$F9BB  BNE $f9ed
+$F9BD  LDA $9e
+$F9BF  AND #$0f
+$F9C1  CMP #$04
+$F9C3  BNE $f9c7
+$F9C5  LDA #$10
+$F9C7  CMP #$09
+$F9C9  BNE $f9cd
+$F9CB  LDA #$11
+$F9CD  CMP #$0e
+$F9CF  BNE $f9d3
+$F9D1  LDA #$12
+$F9D3  TAX
+$F9D4  LDA $85,X
+$F9D6  CMP #$00
+$F9D8  BNE $f9ed
+$F9DA  LDY $9e
+$F9DC  CPY #$e6
+$F9DE  BCC $f9e5
+$F9E0  LDA #$02
+$F9E2  JMP $f9e7
+$F9E5  LDA #$01
+$F9E7  STA $85,X
+$F9E9  LDA #$02
+$F9EB  STA $a8
+$F9ED  INC $9e
+$F9EF  LDX $a4
+$F9F1  LDA $0282
+$F9F4  AND #$03
+$F9F6  CMP $c8
+$F9F8  BEQ $fa0d
+$F9FA  STA $c8
+$F9FC  CMP #$01
+$F9FE  BNE $fa09
+$FA00  LDA $a4
+$FA02  EOR #$01
+$FA04  STA $a4
+$FA06  JMP $f961
+$FA09  CMP #$02
+$FA0B  BEQ $fa21
+$FA0D  LDA $0c

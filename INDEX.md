@@ -47,6 +47,7 @@ Kept current per this project's own index-maintenance discipline (see
 - `toolchain-notes.md` — `py65` verified working for base 6502 execution/disassembly, with commands; discloses the TIA/RIOT gap
 - `rom-rights-scope.md` — the verified list of legally analyzable targets, led by `chesterbr/2048-2600` (MIT, directly verified)
 - `disassembly/2048-2600/raw-disassembly-from-reset.txt` — the first committed raw disassembly, from the ROM's own reset vector
+- `disassembly/2048-2600/raw-disassembly-from-f993.txt` — continuation from the real jump target found in the reset-vector segment
 
 ## `docs/` — public site (GitHub Pages, deploy on push to `main` under `docs/`)
 
@@ -65,6 +66,7 @@ Kept current per this project's own index-maintenance discipline (see
 - `2026-10-09-sq1-toolchain-verification.md` — verifies `py65` (pure-Python 6502 emulator) correct on a hand-assembled test program; discloses it has no TIA/RIOT model, so only the opcode-level half of SQ-1's toolchain need is resolved
 - `2026-10-10-sq1-rom-rights-scoping.md` — verifies `chesterbr/2048-2600` is MIT-licensed directly via GitHub's API and the repo's own LICENSE file; recommends it as SQ-3's first target; SQ-1 now substantively complete
 - `2026-10-10-sq3-first-raw-disassembly.md` — first raw disassembly of 2048-2600 from its reset vector; confirms the standard Atari 2600 startup idiom and catches a real methodology lesson (linear-sweep disassembly produces garbage past an unconditional JMP)
+- `2026-10-10-sq3-disassembly-continuation-from-jump-target.md` — continues disassembly from the real jump target (`$F993`), clean throughout, confirming the data-region hypothesis; flags a RIOT I/O touch and a lookup table as unconfirmed leads
 
 ## `methods/`
 

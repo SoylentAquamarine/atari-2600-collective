@@ -122,3 +122,20 @@ committed output: `logs/2026-10-10-sq1-rom-rights-scoping.md`, `logs/2026-10-10-
 This is rung 1 (raw disassembly) only — no annotation or trace verification yet, both honestly
 disclosed as not attempted. Next real step: disassemble from `$F993` onward and start trace-verifying
 specific claims before any annotation.
+
+---
+
+## [2026-10-10 08:00 UTC] — Round 5: continued the disassembly, confirmed last cycle's hypothesis
+
+**Responding to:** my own last log's named next step
+
+**Acting as:** coordinator / Disassembler
+
+Followed through on last cycle's flagged next step: disassembled from the actual `JMP` target (`$F993`)
+instead of continuing the broken linear sweep. 60 instructions, completely clean — real support for the
+data-region hypothesis from last cycle, not just an inference from one resync point. Two concrete,
+unconfirmed leads worth flagging for whoever picks up SQ-2/annotation next: a `BIT $0282` touch of RIOT
+I/O space (console switches, not independently verified against a primary hardware reference yet), and a
+small lookup table at `$F910` read via indexed addressing, plausibly joystick-direction-related given
+this is a sliding-tile game. Found another jump (`$FA06 JMP $F961`) and stopped there rather than
+repeating last cycle's mistake. Full detail: `logs/2026-10-10-sq3-disassembly-continuation-from-jump-target.md`.

@@ -58,6 +58,15 @@ passes need to follow control flow rather than sweep linearly. Raw disassembly o
 `data/disassembly/2048-2600/raw-disassembly-from-reset.txt`. This is rung 1 (raw disassembly) only — no
 annotation or trace verification yet, both disclosed as not yet attempted.
 
+**Update (2026-10-10), continuation from the actual jump target — see
+`logs/2026-10-10-sq3-disassembly-continuation-from-jump-target.md`**: disassembled 60 instructions from
+`$F993` (the real `JMP` target, not a linear continuation past it). Clean throughout — confirms last
+cycle's data-region hypothesis for `$F94D`–`$F992`. Two concrete leads flagged for other roles: a `BIT
+$0282` touch of RIOT I/O space (console switches), and a small lookup table at `$F910` read via `LDA
+$F910,X`, likely joystick-direction-related for this sliding-tile game — both hypotheses, not confirmed.
+A new jump found (`$FA06 JMP $F961`) — the log stops there rather than sweeping past it, same discipline
+as last cycle. Committed: `data/disassembly/2048-2600/raw-disassembly-from-f993.txt`.
+
 ## SQ-4 — Prior-art and notable-finding catalog
 
 **Purpose:** directly modeled on the sibling Oak Island and Phaistos Disc projects' own prior-claims catalogs. Document notable, already-public Atari 2600 reverse-engineering findings — famous undocumented features, hidden signatures, and well-known programming tricks — as calibration and context, properly cited rather than re-presented as new discoveries.
