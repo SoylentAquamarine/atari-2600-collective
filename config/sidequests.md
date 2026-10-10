@@ -67,6 +67,17 @@ $F910,X`, likely joystick-direction-related for this sliding-tile game — both 
 A new jump found (`$FA06 JMP $F961`) — the log stops there rather than sweeping past it, same discipline
 as last cycle. Committed: `data/disassembly/2048-2600/raw-disassembly-from-f993.txt`.
 
+**Update (2026-10-10), a real correction to the data-region claim — see
+`logs/2026-10-10-sq3-f961-code-and-data-region-correction.md`**: disassembled from `$F961` (last cycle's
+own named next step) and found it flows directly into the already-disassembled `$F993` block — meaning
+`$F961`–`$F992` is real code, not data. Re-checked the original `$F94D` linear sweep precisely and found
+it actually resyncs at **`$F961`, not `$F993`** as an earlier log stated — a genuine error in that log,
+corrected here rather than left standing. The true likely-data region narrows to `$F94D`–`$F960` (~20
+bytes), not `$F94D`–`$F992` (~70 bytes). Control-flow picture now clearer: one continuous code block with
+two entry points — `$F94A JMP $F993` (skips the `$F961`–`$F992` initialization) and `$FA06 JMP $F961`
+(the loop's own full entry) — stated as a hypothesis pending an actual trace, not yet confirmed. Committed:
+`data/disassembly/2048-2600/raw-disassembly-from-f961.txt`.
+
 ## SQ-4 — Prior-art and notable-finding catalog
 
 **Purpose:** directly modeled on the sibling Oak Island and Phaistos Disc projects' own prior-claims catalogs. Document notable, already-public Atari 2600 reverse-engineering findings — famous undocumented features, hidden signatures, and well-known programming tricks — as calibration and context, properly cited rather than re-presented as new discoveries.

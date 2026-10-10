@@ -23,12 +23,16 @@ git log of this file — nothing here is ever silently overwritten.
 
 ## ROMs Under Analysis
 
-- **2048-2600** (`chesterbr/2048-2600`) — raw disassembly extended to two segments (rung 1 of the evidence
-  ladder): the reset-vector startup routine (`$F914`–`$F94A`) and the continuation at the real jump target
-  (`$F993`–`$FA0D`), confirmed clean throughout, supporting last cycle's data-region hypothesis for
-  `$F94D`–`$F992`. Two unconfirmed leads flagged for future annotation: a RIOT I/O touch (`BIT $0282`) and
-  a small lookup table at `$F910`. Another jump found (`$FA06 JMP $F961`) — not yet followed. Annotation
-  and trace verification (rungs 2–3) still not attempted.
+- **2048-2600** (`chesterbr/2048-2600`) — raw disassembly extended to three segments (rung 1 of the
+  evidence ladder): the reset-vector startup routine (`$F914`–`$F94A`), and one continuous code block
+  spanning `$F961`–`$FA0D` reached by two separate jumps (`$F94A JMP $F993`, landing mid-block, and
+  `$FA06 JMP $F961`, the block's own start) — confirmed clean throughout. **Correction (2026-10-10)**: an
+  earlier claim that the likely-data region was `$F94D`–`$F992` was imprecise; re-checked exactly, it
+  narrows to `$F94D`–`$F960` (~20 bytes) — `$F961` onward is confirmed real code, not data. Two
+  unconfirmed leads flagged for future annotation: a RIOT I/O touch (`BIT $0282`) and a small lookup table
+  at `$F910`. A two-entry-point control-flow hypothesis is now on file (first-entry skip-ahead vs. full
+  loop entry) but not yet trace-confirmed. Annotation and trace verification (rungs 2–3) still not
+  attempted — trace verification of this exact hypothesis is the clear next step.
 
 ## Verified Disassemblies
 

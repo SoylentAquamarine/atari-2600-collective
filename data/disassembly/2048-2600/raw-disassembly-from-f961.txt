@@ -1,0 +1,38 @@
+; 2048-2600 raw disassembly, from $F961 (the loop-entry jump target found at $FA06 JMP $F961)
+; ROM sha256: c85dc2204299b0a29209d3f80ae112678c171dab216719593625647d2436f1e1
+; CORRECTION: this is the real resync point for the $F94D linear sweep, not $F993 as an
+; earlier log mistakenly stated -- see 2026-10-10-sq3-f961-code-and-data-region-correction.md
+; This block flows directly into the already-committed raw-disassembly-from-f993.txt content.
+
+$F961  LDA $04
+$F963  STA $08
+$F965  LDX #$17
+$F967  LDA #$00
+$F969  LDY #$04
+$F96B  STA $80,X
+$F96D  DEX
+$F96E  DEY
+$F96F  BNE $f96b
+$F971  DEX
+$F972  CPX #$05
+$F974  BCS $f969
+$F976  LDA #$00
+$F978  LDX #$05
+$F97A  LDY $a4
+$F97C  CPY #$01
+$F97E  BEQ $f982
+$F980  LDX #$02
+$F982  STA $c0,X
+$F984  DEX
+$F985  BPL $f982
+$F987  STA $c7
+$F989  STA $cb
+$F98B  STA $cc
+$F98D  STA $cd
+$F98F  LDA #$01
+$F991  STA $a8
+$F993  LDA #$02
+$F995  STA $00
+$F997  STA $02
+$F999  STA $02
+$F99B  STA $02

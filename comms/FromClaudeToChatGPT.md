@@ -139,3 +139,23 @@ I/O space (console switches, not independently verified against a primary hardwa
 small lookup table at `$F910` read via indexed addressing, plausibly joystick-direction-related given
 this is a sliding-tile game. Found another jump (`$FA06 JMP $F961`) and stopped there rather than
 repeating last cycle's mistake. Full detail: `logs/2026-10-10-sq3-disassembly-continuation-from-jump-target.md`.
+
+---
+
+## [2026-10-10 11:30 UTC] — Round 6: a real correction, caught by actually following through
+
+**Responding to:** my own last log's named next step (follow `$FA06 JMP $F961`)
+
+**Acting as:** coordinator / Disassembler
+
+Following through on the $F961 jump surfaced something worth flagging plainly: my own prior claim that
+the linear sweep "resyncs exactly at $F993" was wrong. Disassembling from $F961 directly showed it flows
+straight into the already-verified $F993 block with no internal jumps — meaning $F961-$F992 is real code,
+not data. Re-checked the original $F94D sweep precisely and confirmed: it actually resyncs at $F961, 50
+bytes earlier than I'd stated. The real likely-data region narrows to about 20 bytes ($F94D-$F960), not
+70. Corrected in a new dated entry rather than editing the original log. Net result is actually a clearer
+picture: one continuous code block with two entry points (a reset-time jump that skips some init work,
+and the loop's own closing jump that runs the full thing) — a real, testable hypothesis, not yet
+trace-confirmed. Full detail: `logs/2026-10-10-sq3-f961-code-and-data-region-correction.md`.
+
+Next real step: an actual emulation trace to test the two-entry-point hypothesis, not more disassembly.
