@@ -37,7 +37,13 @@ complete** — both the toolchain and rights-scoping halves have real, verified 
 
 **Deliverables:** `data/hardware-reference.md` — a cited reference document the Disassembler and other roles use throughout, not a one-time research note.
 
-**Status:** not started. Can begin in parallel with SQ-1.
+**Status (2026-10-10), first pass — see `logs/2026-10-10-sq3-extended-trace-and-loop-periodicity.md`**:
+seeded directly by a real need in SQ-3's own disassembly (a previously-unremarked `STA $02` turned out to
+be a named, well-documented TIA idiom). Catalogs the 6507/6502 differences, RIOT RAM/IO memory ranges, and
+the full TIA write-register map ($00-$2C), cross-checked against multiple independent sources this cycle
+(not asserted from memory). Directly applied to identify a likely graphics-kernel routine in SQ-3's own
+work — see SQ-3 below. "Racing the beam" model documented at the register level (WSYNC); bank-switching
+schemes still not catalogued (deferred, not yet needed by the current target ROM).
 
 ## SQ-3 — First target selection and initial disassembly
 
@@ -88,6 +94,18 @@ this-run-confirmed parallel path to the same destination. Newly disassembled:
 `data/disassembly/2048-2600/raw-disassembly-from-fa0d.txt`. **Genuinely unresolved, disclosed**: whether
 `$F961` repeats as a per-frame loop wasn't observed in 4,000 steps — `py65` has no TIA/RIOT timing model,
 so this may not be answerable with this toolchain alone.
+
+**Update (2026-10-10), the loop question resolved, a graphics kernel identified — see
+`logs/2026-10-10-sq3-extended-trace-and-loop-periodicity.md`**: a 50,000-step extended trace (12.5x longer)
+confirms a real, precisely periodic loop exists, entered at **`$F993`, not `$F961`** (period 2,616 steps
+after warm-up); `$F961` is visited only once (one-time setup, not the loop's own re-entry); `$FA06` is
+never taken across the full trace. Using SQ-2's newly-seeded hardware reference, identified a likely
+graphics/display kernel at `$FBB0`-`$FC8F` — WSYNC strobes, a glyph-pointer table built from packed board
+values, and writes to the player-sprite registers consistent with drawing the sliding-tile board. A
+self-caught instruction-alignment error (a static sweep starting one byte off at `$FC10`) was caught via
+cross-check against the live trace and corrected before being committed — see
+`data/disassembly/2048-2600/raw-disassembly-from-fbb0.txt`. New leads: `$FD97` and several
+not-yet-interpreted zero-page variables (`$9D`, `$C6`, `$C7`, `$C9`, `$CB`, `$A4`).
 
 ## SQ-4 — Prior-art and notable-finding catalog
 

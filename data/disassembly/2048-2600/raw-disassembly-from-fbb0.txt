@@ -1,0 +1,133 @@
+; 2048-2600 raw disassembly, $FBB0-$FC8F -- trace-confirmed (py65 MPU.step(), real execution order,
+; not a linear static sweep), reached during an extended 50,000-step trace from reset.
+; ROM sha256: c85dc2204299b0a29209d3f80ae112678c171dab216719593625647d2436f1e1
+; See 2026-10-10-sq3-extended-trace-and-loop-periodicity.md for full method and a disclosed
+; self-caught instruction-alignment error this corrects (an earlier static disassembly attempt,
+; started one byte off at $FC10 instead of the real boundary at $FC0F, produced a different,
+; wrong parse from $FC10 onward -- never committed, caught before writing it up).
+; Addresses sorted ascending; duplicate visits (this is a loop, visited many times per 50,000 steps)
+; collapsed to one line each, first-seen instruction text.
+
+$FBB0  NOP
+$FBB1  NOP
+$FBB2  NOP
+$FBB3  NOP
+$FBB4  NOP
+$FBB5  NOP
+$FBB6  NOP
+$FBB7  NOP
+$FBB8  NOP
+$FBB9  STA $10
+$FBBB  STA $11
+$FBBD  STA $02          ; WSYNC strobe
+$FBBF  LDA #$e0
+$FBC1  STA $20          ; HMP0
+$FBC3  LDA #$f0
+$FBC5  STA $21          ; HMP1
+$FBC7  STA $02          ; WSYNC strobe
+$FBC9  STA $2a          ; HMOVE strobe
+$FBCB  LDX #$28
+$FBCD  LDA $c9
+$FBCF  BEQ $fbd6
+$FBD6  LDA $c6
+$FBD8  CMP $c7
+$FBDA  BEQ $fbec
+$FBDC  LDA $a8          ; the project's long-tracked zero-page state variable
+$FBDE  CMP #$07         ; compared against a fixed value -- consistent with a small discrete
+$FBE0  BEQ $fbea        ;   game/animation-state machine, not a per-frame counter
+$FBE2  LDX $cb
+$FBE4  LDA $a4
+$FBE6  CMP #$00
+$FBE8  BEQ $fbec
+$FBEC  STX $06          ; NUSIZ0
+$FBEE  STX $07          ; NUSIZ1
+$FBF0  LDY #$02
+$FBF2  LDX #$0a
+$FBF4  CLC
+; --- loop start: unpack a nibble-pair from a table at $00A1,Y into a pointer-table at $B0,X ---
+$FBF5  LDA $00a1,Y
+$FBF8  AND #$0f         ; low nibble
+$FBFA  STA $a6
+$FBFC  ASL A
+$FBFD  ASL A
+$FBFE  ADC $a6          ; nibble*4 + nibble = nibble*5
+$FC00  ADC #$c6         ; + $C6 base -- low byte of a per-nibble pointer, 5-byte stride
+$FC02  STA $b0,X
+$FC04  DEX
+$FC05  DEX
+$FC06  LDA $00a1,Y
+$FC09  AND #$f0         ; high nibble
+$FC0B  LSR A
+$FC0C  LSR A
+$FC0D  LSR A
+$FC0E  LSR A
+$FC0F  STA $a6
+$FC11  ASL A
+$FC12  ASL A
+$FC13  ADC $a6
+$FC15  ADC #$c6
+$FC17  STA $b0,X
+$FC19  DEX
+$FC1A  DEX
+$FC1B  DEY
+$FC1C  BPL $fbf5        ; loop while Y >= 0 -- builds a 10-byte-wide (5 cells) pointer table
+$FC1E  STA $02          ; WSYNC strobe
+$FC20  LDA #$00
+$FC22  STA $0d          ; PF0 = 0
+$FC24  STA $0e          ; PF1 = 0
+$FC26  STA $0f          ; PF2 = 0   -- playfield cleared
+$FC28  LDY #$04
+$FC2A  STY $a6
+; --- loop start: write five glyph bytes per cell via the pointer table just built ---
+$FC2C  LDY $a6
+$FC2E  LDA ($b0),Y
+$FC30  STA $1b          ; GRP0
+$FC32  STA $02          ; WSYNC strobe
+$FC34  LDA ($b2),Y
+$FC36  STA $1c          ; GRP1
+$FC38  LDA ($b4),Y
+$FC3A  STA $1b          ; GRP0
+$FC3C  LDA ($b6),Y
+$FC3E  STA $a7
+$FC40  LDA ($b8),Y
+$FC42  TAX
+$FC43  LDA ($ba),Y
+$FC45  TAY
+$FC46  LDA $a7
+$FC48  STA $1c          ; GRP1
+$FC4A  STX $1b          ; GRP0
+$FC4C  STY $1c          ; GRP1
+$FC4E  STA $1b          ; GRP0
+$FC50  DEC $a6
+$FC52  BPL $fc2c         ; loop 5 times (one per glyph scanline)
+$FC54  LDA #$00
+$FC56  STA $25          ; VDELP0
+$FC58  STA $26          ; VDELP1
+$FC5A  STA $1b          ; GRP0 = 0
+$FC5C  STA $1c          ; GRP1 = 0
+$FC5E  STA $02          ; WSYNC strobe
+$FC60  LDA $c6
+$FC62  BEQ $fc67
+$FC64  JMP $fd97         ; new lead, not yet disassembled -- only taken on a later pass (step 3884),
+                         ;   confirming $c6 genuinely changes value between iterations
+$FC67  LDA #$00
+$FC69  STA $0d          ; PF0 = 0
+$FC6B  LDA #$01
+$FC6D  STA $0e          ; PF1 = 1
+$FC6F  LDA #$ff
+$FC71  STA $0f          ; PF2 = $FF
+$FC73  LDA #$05
+$FC75  STA $9d
+$FC77  STA $02          ; WSYNC strobe
+$FC79  LDA #$02
+$FC7B  STA $04          ; NUSIZ0 = 2
+$FC7D  STA $05          ; NUSIZ1 = 2
+$FC7F  BIT $80          ; repeated 9x -- no flow effect, possible cycle-padding idiom, not confirmed
+$FC81  BIT $80
+$FC83  BIT $80
+$FC85  BIT $80
+$FC87  BIT $80
+$FC89  BIT $80
+$FC8B  BIT $80
+$FC8D  BIT $80
+$FC8F  BIT $80

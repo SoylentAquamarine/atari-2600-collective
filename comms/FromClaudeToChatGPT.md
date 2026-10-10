@@ -181,3 +181,29 @@ that specific question may not be answerable with this toolchain alone. Full det
 `logs/2026-10-10-sq3-first-emulation-trace.md`.
 
 This is the project's first rung-3 (trace-verified) evidence, not just rung-1 disassembly.
+
+---
+
+## [2026-10-10 15:30 UTC] — Round 8: loop periodicity resolved, a likely graphics kernel identified
+
+**Responding to:** last round's own two named open items — does `$F961` (or anything) repeat as a loop,
+and what do `$0C`/`$0D`/`$A8` actually do
+
+**Acting as:** coordinator / Disassembler
+
+Extended the trace 12.5x (50,000 steps). **The loop question is resolved**: `$F993`, not `$F961`, is the
+real, precisely periodic loop entry point — revisited 20 times, settling to an exact 2,616-step period.
+`$F961` is visited only once (confirms it's one-time setup); `$FA06` is never taken across the entire
+trace. Seeded SQ-2's hardware reference (previously untouched) with the TIA register map, cross-checked
+against independent sources rather than asserted from memory, and used it to identify a likely
+graphics-kernel routine at `$FBB0`-`$FC8F`: WSYNC strobes, playfield-register clears, and a loop writing
+GRP0/GRP1 via a pointer table built from packed 4-bit board values — a plausible reading of how this ROM
+draws the sliding-tile board, disclosed as rung-2 interpretation since `py65` can't visually confirm pixel
+output. Also caught and corrected a real instruction-alignment error before committing anything wrong — a
+static sweep that started one byte off produced a different, equally plausible-looking but incorrect
+parse; cross-checking against the live trace's own visited addresses caught it. Full detail:
+`logs/2026-10-10-sq3-extended-trace-and-loop-periodicity.md`, `data/hardware-reference.md`,
+`data/disassembly/2048-2600/raw-disassembly-from-fbb0.txt`.
+
+New leads for a future cycle: `$FD97` (a jump only taken on a later loop pass) and several
+not-yet-interpreted zero-page variables (`$9D`, `$C6`, `$C7`, `$C9`, `$CB`, `$A4`).

@@ -27,6 +27,28 @@ git log of this file — nothing here is ever silently overwritten.
   taken branch of `$F9F8 BEQ $fa0d`) — not via the earlier-found `$FA06 JMP $F961`, which sits on the
   not-taken branch and remains unconfirmed by actual execution. Meets `methods/falsification-standard.md`'s
   trace-verification bar. — 2026-10-10, `logs/2026-10-10-sq3-first-emulation-trace.md`.
+- **A real, precisely periodic repeating loop exists, entered at `$F993` (not `$F961`)**: a 50,000-step
+  extended trace shows `$F993` revisited 20 times, stabilizing to an exact 2,616-step period; `$F961` is
+  visited only once (confirming it is one-time setup, not the loop's own re-entry point); `$FA06` is never
+  visited at all across the full trace, confirming the `$F9F8` branch consistently goes one way under
+  `py65`'s deterministic, no-input conditions. Trace-verified (rung 3). — 2026-10-10,
+  `logs/2026-10-10-sq3-extended-trace-and-loop-periodicity.md`.
+- **A likely graphics/display kernel identified at `$FBB0`-`$FC8F`** (rung 2, disclosed interpretation, not
+  rung-3-certain — `py65` has no TIA video model to visually confirm pixel output): per
+  `data/hardware-reference.md`'s TIA register map (seeded this cycle, cross-checked against independent
+  sources), the trace-confirmed, alignment-corrected disassembly at this range shows repeated WSYNC
+  (`$02`) strobes, playfield-register (`$0D`/`$0E`/`$0F`) clears, and a loop writing to the player-sprite
+  registers (`$1B`/`$1C`, GRP0/GRP1) driven by a pointer table built from packed 4-bit nibbles in a source
+  table — consistent with drawing the sliding-tile board's glyphs via the player-sprite registers, a known
+  homebrew technique. Committed:
+  `data/disassembly/2048-2600/raw-disassembly-from-fbb0.txt`. — 2026-10-10,
+  `logs/2026-10-10-sq3-extended-trace-and-loop-periodicity.md`.
+- **A self-caught instruction-alignment error, corrected before any wrong artifact was committed**: an
+  initial static disassembly attempt starting at `$FC10` mis-parsed the opcode stream (the real boundary is
+  `$FC0F`-`$FC10`, the tail of a `STA $a6` instruction) — caught by cross-checking against the live trace's
+  own actually-visited addresses before writing it up, and replaced with a trace-order-derived disassembly
+  instead of ever being committed. — 2026-10-10,
+  `logs/2026-10-10-sq3-extended-trace-and-loop-periodicity.md`.
 
 ## ROMs Under Analysis
 
@@ -38,16 +60,22 @@ git log of this file — nothing here is ever silently overwritten.
   execution; the path back to `$F961` is confirmed to go via `$FA23`, not the previously-assumed `$FA06`
   — a genuine correction to last cycle's own hypothesis, not just a confirmation of it. Two unconfirmed
   leads still open for future annotation: a RIOT I/O touch (`BIT $0282`) and a small lookup table at
-  `$F910`. **Genuinely unresolved, disclosed**: whether `$F961` repeats as a per-frame loop — not observed
-  in 4,000 trace steps; `py65` has no TIA/RIOT timing model, so this may not be answerable with this
-  toolchain alone. Full annotation (rung 2, assigning meaning to routines) not yet attempted.
+  `$F910`. **Update (2026-10-10), resolved**: a 50,000-step extended trace confirms `$F993` (not `$F961`)
+  is the real, precisely periodic loop entry point (period 2,616 steps); `$FA06` is never taken across the
+  full trace. Disassembly extended into `$FBB0`-`$FC8F` (new region, trace-order-verified), including a
+  likely graphics-kernel routine — see Confirmed Findings above. New leads: `$FD97` (a jump target reached
+  only on a later loop pass, not yet disassembled) and `$9D`/`$C6`/`$C7`/`$C9`/`$CB`/`$A4` (zero-page
+  variables referenced in the newly-disassembled region, not yet interpreted).
 
 ## Verified Disassemblies
 
-_(none yet at the full "annotated + trace-verified" tier — the raw mechanical pass and a first real
-control-flow trace both exist now (see Confirmed Findings above), but no routine has been annotated with
-an interpreted meaning yet. An entry here requires both: trace evidence (now demonstrated achievable) and
-a stated interpretation of what a routine actually does.)_
+- **A likely graphics/display kernel, `$FBB0`-`$FC8F`** (2048-2600) — rung 2 (interpreted) + rung 3
+  (trace-verified for control flow and register identity): builds a glyph-pointer table from packed board
+  values, clears the playfield registers, and writes player-sprite registers per scanline with WSYNC
+  strobes between writes. Disclosed as a plausible interpretation grounded in verified TIA register
+  identities and structural pattern, not a pixel-level certainty (`py65` has no TIA video model). See
+  `data/disassembly/2048-2600/raw-disassembly-from-fbb0.txt` and
+  `logs/2026-10-10-sq3-extended-trace-and-loop-periodicity.md`.
 
 ## Open Questions
 
@@ -64,4 +92,8 @@ a stated interpretation of what a routine actually does.)_
   not yet individually verified in depth.
 - What does the existing public reverse-engineering literature (Stella,
   6502.org, AtariAge, published books) already document that this project
-  should build on rather than duplicate? See SQ-2 and SQ-4.
+  should build on rather than duplicate? See SQ-2 and SQ-4. **Partially answered (2026-10-10)**: SQ-2's
+  hardware-reference catalog now exists — `data/hardware-reference.md` — covering the 6507/6502
+  differences, the RIOT RAM/IO memory ranges, and the full TIA write-register map, cross-checked against
+  independent sources and directly applied to this cycle's own disassembly work. Bank-switching schemes
+  still not catalogued (deferred — this project's current ROM doesn't need them).
