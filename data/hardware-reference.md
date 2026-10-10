@@ -27,7 +27,24 @@ dfarq.homeip.net's "The Atari 2600 CPU: The MOS 6507.")
 ## RIOT (6532)
 
 - 128 bytes of general-purpose RAM, two 8-bit I/O ports, one programmable timer.
-- **Memory map**: RIOT RAM occupies **$0080-$00FF**; RIOT I/O and timer registers occupy **$0280-$0297**.
+- **Memory map**: RIOT RAM occupies **$0080-$00FF** (mirrored at $0180-$01FF); RIOT I/O and timer registers
+  occupy **$0280-$0297**.
+
+| Addr | Name | Function |
+|---|---|---|
+| `$0280` | **SWCHA** | joystick/controller data port — bits 4-7 = player 1, bits 0-3 = player 2 |
+| `$0281` | SWACNT | port A data-direction register |
+| `$0282` | **SWCHB** | console switches (difficulty, select, reset, color/B-W) |
+| `$0283` | SWBCNT | port B data-direction register |
+| `$0284` | **INTIM** | timer output — read to get the current countdown value |
+| `$0294` | TIM1T | timer-interval write, 1-cycle prescaler |
+| `$0295` | TIM8T | timer-interval write, 8-cycle prescaler |
+| `$0296` | **TIM64T** | timer-interval write, 64-cycle prescaler |
+| `$0297` | T1024T | timer-interval write, 1024-cycle prescaler |
+
+Cross-checked this cycle (astro.physik.uni-potsdam.de, Wikipedia's "MOS Technology 6532" article, and the
+cc65 toolchain's own RIOT struct layout). A joystick direction bit reads **0 when pressed**, 1 when not —
+`$F0` (all four relevant bits high) is the standard "no direction pressed" idiom.
 
 ## TIA — the "racing the beam" registers
 

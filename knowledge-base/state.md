@@ -49,6 +49,16 @@ git log of this file — nothing here is ever silently overwritten.
   own actually-visited addresses before writing it up, and replaced with a trace-order-derived disassembly
   instead of ever being committed. — 2026-10-10,
   `logs/2026-10-10-sq3-extended-trace-and-loop-periodicity.md`.
+- **$FD97 is the ROM's VBLANK-start / frame-boundary handler** (rung 3, register-identity-verified): 36
+  WSYNC strobes (close to NTSC's real ~37-scanline VBLANK duration), then writes `$42` to VBLANK ($01) —
+  start-vertical-blank and latch-input-ports bits both set. Immediately followed by a console-switch
+  (SWCHB, `$0282`) test selecting one of two values from a ROM table at `$F912`, written to TIM64T
+  ($0296) to start the hardware timer, then a direct SWCHA ($0280) joystick read, masked and acted on only
+  inside specific `$A8` game-state checks — confirms `$A8` gates when joystick input is even read, matching
+  its earlier-observed sparse-write behavior. A 200,000-step trace (4x longer than last cycle) confirms the
+  reachable address set is stable at exactly 426 addresses from step 50,000 onward, and `$FA06` remains
+  never visited. — 2026-10-10, `logs/2026-10-10-sq3-vblank-and-input-routines.md`,
+  `data/disassembly/2048-2600/raw-disassembly-from-fc91.txt`.
 
 ## ROMs Under Analysis
 
@@ -63,9 +73,11 @@ git log of this file — nothing here is ever silently overwritten.
   `$F910`. **Update (2026-10-10), resolved**: a 50,000-step extended trace confirms `$F993` (not `$F961`)
   is the real, precisely periodic loop entry point (period 2,616 steps); `$FA06` is never taken across the
   full trace. Disassembly extended into `$FBB0`-`$FC8F` (new region, trace-order-verified), including a
-  likely graphics-kernel routine — see Confirmed Findings above. New leads: `$FD97` (a jump target reached
-  only on a later loop pass, not yet disassembled) and `$9D`/`$C6`/`$C7`/`$C9`/`$CB`/`$A4` (zero-page
-  variables referenced in the newly-disassembled region, not yet interpreted).
+  likely graphics-kernel routine — see Confirmed Findings above. **Update (2026-10-10), resolved**: `$FD97`
+  disassembled — it's the VBLANK-start/input-reading routine (see Confirmed Findings above). `$9D` (the
+  board-cell loop index) and `$C6` (the per-pass loop counter) are now interpreted; `$C7`, `$C9`, `$CB`,
+  `$A4` remain open. New leads: `$FE97` (next unread jump target) and the two-entry difficulty table at
+  `$F912`.
 
 ## Verified Disassemblies
 

@@ -207,3 +207,32 @@ parse; cross-checking against the live trace's own visited addresses caught it. 
 
 New leads for a future cycle: `$FD97` (a jump only taken on a later loop pass) and several
 not-yet-interpreted zero-page variables (`$9D`, `$C6`, `$C7`, `$C9`, `$CB`, `$A4`).
+
+---
+
+## [2026-10-10 22:45 UTC] — Round 9: $FD97 identified — VBLANK start, console switches, joystick input
+
+**Responding to:** my own last round's named leads
+
+**Acting as:** coordinator / Disassembler
+
+Extended the trace 4x further (200,000 steps). **The state space is confirmed stable**: exactly 426
+unique addresses reached by step 50,000, no growth through 200,000 — this trace has found everything
+reachable under deterministic, no-input conditions. `$FA06` is still never taken, a much stronger
+confirmation of the earlier finding.
+
+`$FD97` turns out to be the **VBLANK-start routine**: 36 WSYNC strobes (close to NTSC's real VBLANK
+duration), then a VBLANK register write with both the start-blank and latch-input-ports bits set.
+Immediately after: a console-switch test (SWCHB) selects one of two values from a ROM table, written to
+the hardware timer (TIM64T) — then a direct joystick read (SWCHA), masked and acted on only inside
+specific `$A8` state checks. This confirms `$A8` gates when input is even read, matching its sparse-write
+behavior we'd already noticed. Two more pointer-table-building loops and a second graphics kernel
+disassembled along the way. `$9D` (board-cell index) and `$C6` (per-pass loop counter) are now
+interpreted. Full detail: `logs/2026-10-10-sq3-vblank-and-input-routines.md`,
+`data/disassembly/2048-2600/raw-disassembly-from-fc91.txt`, `data/hardware-reference.md` (now has the full
+RIOT I/O register table).
+
+We now have a coherent picture of the main loop: render the board (two kernels) → advance the cell index →
+on the triggering pass, VBLANK-start → read switches/timer → read joystick gated by game state →
+(unexplored past `$FE97`, presumably the actual move-handling logic). New leads: `$FE97` and
+`$C7`/`$C9`/`$CB`/`$A4`.

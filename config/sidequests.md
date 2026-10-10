@@ -107,6 +107,17 @@ cross-check against the live trace and corrected before being committed — see
 `data/disassembly/2048-2600/raw-disassembly-from-fbb0.txt`. New leads: `$FD97` and several
 not-yet-interpreted zero-page variables (`$9D`, `$C6`, `$C7`, `$C9`, `$CB`, `$A4`).
 
+**Update (2026-10-10), $FD97 identified, input reading confirmed — see
+`logs/2026-10-10-sq3-vblank-and-input-routines.md`**: extended the trace to 200,000 steps (4x longer).
+**$FA06 still never visited**; the reachable address set is confirmed stable at exactly 426 addresses from
+step 50,000 onward — the deterministic trace's full state space has been explored. `$FD97` is the ROM's
+VBLANK-start routine (36 WSYNC strobes, then VBLANK register write), immediately followed by a
+console-switch-driven timer setup (SWCHB test → TIM64T write from a 2-entry ROM table) and a direct SWCHA
+joystick read, gated by `$A8` game-state checks. Two more pointer-table-building loops and a second
+graphics kernel also disassembled — see `data/disassembly/2048-2600/raw-disassembly-from-fc91.txt`. `$9D`
+and `$C6` are now interpreted (board-cell index, per-pass loop counter); `$C7`/`$C9`/`$CB`/`$A4` and
+`$FE97` remain open leads.
+
 ## SQ-4 — Prior-art and notable-finding catalog
 
 **Purpose:** directly modeled on the sibling Oak Island and Phaistos Disc projects' own prior-claims catalogs. Document notable, already-public Atari 2600 reverse-engineering findings — famous undocumented features, hidden signatures, and well-known programming tricks — as calibration and context, properly cited rather than re-presented as new discoveries.

@@ -1,0 +1,151 @@
+; 2048-2600 raw disassembly, $FC91-$FE01 -- trace-confirmed (py65 MPU.step(), real execution order),
+; reached during a 200,000-step extended trace (4x longer than the prior cycle's 50,000-step run).
+; ROM sha256: c85dc2204299b0a29209d3f80ae112678c171dab216719593625647d2436f1e1
+; See 2026-10-10-sq3-vblank-and-input-routines.md for full method. Continues directly from
+; raw-disassembly-from-fbb0.txt ($FBB0-$FC8F); this file picks up at $FC91.
+; State-space finding: the trace's unique-address set stabilizes at exactly 426 addresses by step
+; 50,000 and does not grow through step 200,000 -- the reachable code under py65's deterministic,
+; no-input conditions has been fully explored. $FA06 (the not-taken branch found two cycles ago)
+; is STILL never visited at 200,000 steps, strengthening that finding.
+
+$FC91  STA $10
+$FC93  BIT $80
+$FC95  STA $11
+$FC97  STA $02          ; WSYNC strobe
+$FC99  LDA #$f0
+$FC9B  STA $20          ; HMP0
+$FC9D  LDA #$10
+$FC9F  STA $21          ; HMP1
+$FCA1  STA $02          ; WSYNC strobe
+$FCA3  STA $2a          ; HMOVE strobe
+$FCA5  STA $02          ; WSYNC strobe
+; --- loop start: build a glyph-pointer table from board-cell values at RIOT RAM ($80,X) ---
+; plausible hypothesis, not confirmed: the "value*11" multiplier may index an 11-entry glyph table,
+; matching 2048's own 11 distinct tile values (2,4,8,...,2048) -- flagged as motivated but unverified
+$FCA7  LDA #$00
+$FCA9  LDY #$00
+$FCAB  LDX $9d          ; board-cell index (first identified two cycles ago, now interpreted)
+$FCAD  LDA $80,X        ; read a cell's value from RIOT RAM
+$FCAF  LDX #$00
+$FCB1  CMP #$80
+$FCB3  BCC $fcb9
+$FCB9  STX $a0
+$FCBB  STA $a6
+$FCBD  ASL A
+$FCBE  ASL A
+$FCBF  ASL A            ; A = value * 8
+$FCC0  STA $a7
+$FCC2  CLC
+$FCC3  LDA $a6
+$FCC5  ADC $a6
+$FCC7  ADC $a6          ; A = value * 3
+$FCC9  ADC $a7          ; A = value*3 + value*8 = value*11
+$FCCB  SEC
+$FCCC  SBC $a0
+$FCCE  STA $00b0,Y      ; pointer table (same table as the FC10 loop)
+$FCD1  INY
+$FCD2  INY
+$FCD3  INC $9d
+$FCD5  STA $02          ; WSYNC strobe
+$FCD7  CPY #$08
+$FCD9  BNE $fcab        ; loop 4 times
+$FCDB  LDX $9d
+$FCDD  LDA $a8          ; the long-tracked game-state variable
+$FCDF  CMP #$00
+$FCE1  BNE $fd1f
+; --- a second pointer-table-building loop, different stride, for a different display element ---
+$FD1F  LDY #$03
+$FD21  DEX
+$FD22  LDA $80,X
+$FD24  ASL A
+$FD25  ASL A
+$FD26  ASL A
+$FD27  ASL A            ; A = value * 16
+$FD28  BEQ $fd2c
+$FD2A  ADC #$08
+$FD2C  STA $00bc,Y      ; a different pointer table, $BC+Y
+$FD2F  DEY
+$FD30  BPL $fd21
+$FD32  STA $02          ; WSYNC strobe
+$FD34  LDX $bf
+$FD36  TXS              ; deliberate stack-pointer manipulation (a known 2600 register-economy trick)
+$FD37  LDY #$09
+$FD39  DEY
+$FD3A  BNE $fd39        ; short delay loop
+$FD3C  LDY #$0a
+$FD3E  LDA #$99
+$FD40  STA $0f          ; PF2
+$FD42  LDX $be
+$FD44  LDA $bc
+$FD46  STA $06          ; NUSIZ0
+$FD48  STA $02          ; WSYNC strobe
+$FD4A  LDA $bd
+$FD4C  STA $07          ; NUSIZ1
+$FD4E  LDA ($b6),Y
+$FD50  STA $a6
+$FD52  NOP
+$FD53  NOP
+; --- a second graphics kernel, drawing a different screen row via the same pointer-table pattern ---
+$FD54  LDA ($b0),Y
+$FD56  STA $1b          ; GRP0
+$FD58  LDA ($b2),Y
+$FD5A  STA $1c          ; GRP1
+$FD5C  LDA ($b4),Y
+$FD5E  STA $1b          ; GRP0
+$FD60  LDA $a6
+$FD62  STX $06          ; NUSIZ0
+$FD64  STA $1c          ; GRP1
+$FD66  TSX
+$FD67  STX $07          ; NUSIZ1
+$FD69  DEY
+$FD6A  BPL $fd42        ; loop 10 times (one per scanline)
+$FD6C  STA $02          ; WSYNC strobe
+$FD6E  LDA #$00
+$FD70  STA $1b          ; GRP0 = 0
+$FD72  STA $1c          ; GRP1 = 0
+$FD74  LDA #$ff
+$FD76  STA $0f          ; PF2
+$FD78  INC $9d          ; advance to the next board cell
+$FD7A  LDX $9d
+$FD7C  LDA $80,X
+$FD7E  CMP #$7f         ; sentinel value -- end of this pass over the board?
+$FD80  BEQ $fd8b
+$FD82  STA $02          ; WSYNC strobe (x3 -- timing pad)
+$FD84  STA $02
+$FD86  STA $02
+$FD88  JMP $fca7        ; next cell
+$FD8B  LDX #$05
+$FD8D  STA $02          ; WSYNC strobe
+$FD8F  DEX
+$FD90  BNE $fd8d        ; timing pad, 5 scanlines
+$FD92  INC $c6          ; the loop-pass counter identified last cycle, confirmed incremented here
+$FD94  JMP $fb72        ; back to the main per-pass entry point
+
+; --- $FD97: a separate entry point (reached via $FC64's "JMP $fd97" on a later pass, not fall-through
+; from $FD94 above) -- the VBLANK-start / frame-boundary handler ---
+$FD97  LDX #$24         ; 36 (decimal) -- close to NTSC's real VBLANK scanline count
+$FD99  STA $02          ; WSYNC strobe
+$FD9B  DEX
+$FD9C  BNE $fd99        ; wait 36 scanlines
+$FD9E  LDA #$42         ; binary 01000010: bit1 (start VBLANK) + bit6 (latch input ports)
+$FDA0  STA $01          ; VBLANK
+$FDA2  LDX #$00
+$FDA4  LDA #$08
+$FDA6  BIT $0282        ; SWCHB -- console switches (difficulty/select/reset)
+$FDA9  BNE $fdac
+$FDAB  INX              ; select one of two table entries based on a console switch bit
+$FDAC  LDA $f912,X      ; a 2-entry table in ROM
+$FDAF  STA $0296        ; TIM64T -- starts the hardware timer, 64-cycle prescaler
+$FDB2  LDA $0280        ; SWCHA -- joystick data port (bits 4-7 = player 1, bits 0-3 = player 2)
+$FDB5  LDX $c7
+$FDB7  BEQ $fdbd
+$FDBD  AND #$f0         ; isolate one joystick's 4 direction bits
+$FDBF  LDX $a8          ; game-state variable
+$FDC1  CPX #$02
+$FDC3  BEQ $fdf3
+$FDF3  CMP #$f0         ; $F0 = no direction pressed (all bits high; a pressed direction clears its bit)
+$FDF5  BNE $fdfb
+$FDFB  LDA $a8
+$FDFD  CMP #$04
+$FDFF  BEQ $fe04
+$FE01  JMP $fe97        ; new lead, not yet disassembled
