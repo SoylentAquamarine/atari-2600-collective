@@ -49,6 +49,7 @@ Kept current per this project's own index-maintenance discipline (see
 - `disassembly/2048-2600/raw-disassembly-from-reset.txt` — the first committed raw disassembly, from the ROM's own reset vector
 - `disassembly/2048-2600/raw-disassembly-from-f993.txt` — continuation from the real jump target found in the reset-vector segment
 - `disassembly/2048-2600/raw-disassembly-from-f961.txt` — the loop's actual entry point, corrected from an earlier imprecise resync claim
+- `disassembly/2048-2600/raw-disassembly-from-fa0d.txt` — the real, trace-confirmed branch path from `$F9F8`'s taken branch, ending at the newly-found `$FA23 JMP $F961`
 
 ## `docs/` — public site (GitHub Pages, deploy on push to `main` under `docs/`)
 
@@ -69,6 +70,7 @@ Kept current per this project's own index-maintenance discipline (see
 - `2026-10-10-sq3-first-raw-disassembly.md` — first raw disassembly of 2048-2600 from its reset vector; confirms the standard Atari 2600 startup idiom and catches a real methodology lesson (linear-sweep disassembly produces garbage past an unconditional JMP)
 - `2026-10-10-sq3-disassembly-continuation-from-jump-target.md` — continues disassembly from the real jump target (`$F993`), clean throughout, confirming the data-region hypothesis; flags a RIOT I/O touch and a lookup table as unconfirmed leads
 - `2026-10-10-sq3-f961-code-and-data-region-correction.md` — disclosed correction: the prior "data region" claim was imprecise; the real resync point is `$F961` not `$F993`, narrowing the data region to ~20 bytes and revealing a two-entry-point control-flow pattern
+- `2026-10-10-sq3-first-emulation-trace.md` — this project's first real execution trace (`py65`'s engine, not just its disassembler): confirms the first-entry skip-ahead hypothesis, but corrects the assumed path back to `$F961` (a third jump, `$FA23`, not the earlier-found `$FA06`) — rung 3 (trace-verified) evidence
 
 ## `methods/`
 

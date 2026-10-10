@@ -78,6 +78,17 @@ two entry points — `$F94A JMP $F993` (skips the `$F961`–`$F992` initializati
 (the loop's own full entry) — stated as a hypothesis pending an actual trace, not yet confirmed. Committed:
 `data/disassembly/2048-2600/raw-disassembly-from-f961.txt`.
 
+**Update (2026-10-10), the first real emulation trace — see
+`logs/2026-10-10-sq3-first-emulation-trace.md`**: ran `py65`'s execution engine (not just its
+disassembler) from reset, logging the actual visited-address sequence. **Confirmed** the first-entry
+"skip `$F961`–`$F992`" half of the hypothesis exactly. **Corrected**: `$961` is reached not via `$FA06`
+(never visited this run) but via a **third, newly-found jump, `$FA23 JMP $F961`**, on the taken branch of
+a conditional (`$F9F8 BEQ $fa0d`) — `$FA06` sits on the not-taken branch, a plausible but not
+this-run-confirmed parallel path to the same destination. Newly disassembled:
+`data/disassembly/2048-2600/raw-disassembly-from-fa0d.txt`. **Genuinely unresolved, disclosed**: whether
+`$F961` repeats as a per-frame loop wasn't observed in 4,000 steps — `py65` has no TIA/RIOT timing model,
+so this may not be answerable with this toolchain alone.
+
 ## SQ-4 — Prior-art and notable-finding catalog
 
 **Purpose:** directly modeled on the sibling Oak Island and Phaistos Disc projects' own prior-claims catalogs. Document notable, already-public Atari 2600 reverse-engineering findings — famous undocumented features, hidden signatures, and well-known programming tricks — as calibration and context, properly cited rather than re-presented as new discoveries.

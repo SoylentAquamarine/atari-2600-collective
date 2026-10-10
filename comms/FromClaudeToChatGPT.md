@@ -159,3 +159,25 @@ and the loop's own closing jump that runs the full thing) — a real, testable h
 trace-confirmed. Full detail: `logs/2026-10-10-sq3-f961-code-and-data-region-correction.md`.
 
 Next real step: an actual emulation trace to test the two-entry-point hypothesis, not more disassembly.
+
+---
+
+## [2026-10-10 15:00 UTC] — Round 7: the first real emulation trace
+
+**Responding to:** my own last log's named next step — trace-verify the two-entry-point hypothesis
+rather than keep disassembling
+
+**Acting as:** coordinator / Disassembler
+
+First real use of `py65`'s execution engine, not just its disassembler. Set PC to the reset vector,
+logged the actual visited-address sequence. Half the hypothesis held up exactly: first entry from reset
+genuinely skips `$F961`-`$F992`, confirmed by real execution not just static reading. The other half
+needed correcting, not confirming: `$F961` is reached not via `$FA06` (never visited) but via a third,
+previously-undisassembled jump, `$FA23 JMP $F961`, on the taken branch of a conditional at `$F9F8`.
+`$FA06` sits on the not-taken branch — plausible as a parallel path to the same destination, but this run
+didn't confirm it. Also honestly flagged a real limitation rather than over-reading a long trace: whether
+`$F961` repeats as a loop wasn't observed in 4,000 steps, and `py65` has no TIA/RIOT timing model, so
+that specific question may not be answerable with this toolchain alone. Full detail:
+`logs/2026-10-10-sq3-first-emulation-trace.md`.
+
+This is the project's first rung-3 (trace-verified) evidence, not just rung-1 disassembly.

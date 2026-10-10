@@ -1,0 +1,16 @@
+; 2048-2600 raw disassembly, from $FA0D -- the actually-executed branch target from $F9F8 BEQ
+; ROM sha256: c85dc2204299b0a29209d3f80ae112678c171dab216719593625647d2436f1e1
+; Confirmed by real emulation trace (py65 MPU.step()), not just static reading -- see
+; 2026-10-10-sq3-first-emulation-trace.md. Ends at $FA23 JMP $F961, a third jump to the loop
+; entry point, distinct from the earlier-found $F94A JMP $F993 and $FA06 JMP $F961.
+
+$FA0D  LDA $0c
+$FA0F  BPL $fa17
+$FA11  LDX #$01
+$FA13  LDA $0d
+$FA15  BMI $fa26
+$FA17  LDA $a8
+$FA19  CMP #$00
+$FA1B  BEQ $fa21
+$FA1D  CMP #$07
+$FA1F  BNE $fa26

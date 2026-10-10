@@ -20,25 +20,34 @@ git log of this file — nothing here is ever silently overwritten.
   bar for a mechanical opcode-decode claim (committed output, no trace needed at this tier). —
   2026-10-10, `logs/2026-10-10-sq3-first-raw-disassembly.md` and
   `logs/2026-10-10-sq3-disassembly-continuation-from-jump-target.md`.
+- **The first real emulation-trace-verified control-flow claim**: from reset, execution reaches `$F993`
+  directly via `$F94A JMP $F993`, never executing `$F961`–`$F992` on first entry — confirmed by logging
+  the actual program-counter sequence from `py65`'s execution engine (not inferred from static bytes).
+  Separately, execution reaches `$F961` via a previously-undisassembled jump, `$FA23 JMP $F961` (on the
+  taken branch of `$F9F8 BEQ $fa0d`) — not via the earlier-found `$FA06 JMP $F961`, which sits on the
+  not-taken branch and remains unconfirmed by actual execution. Meets `methods/falsification-standard.md`'s
+  trace-verification bar. — 2026-10-10, `logs/2026-10-10-sq3-first-emulation-trace.md`.
 
 ## ROMs Under Analysis
 
-- **2048-2600** (`chesterbr/2048-2600`) — raw disassembly extended to three segments (rung 1 of the
-  evidence ladder): the reset-vector startup routine (`$F914`–`$F94A`), and one continuous code block
-  spanning `$F961`–`$FA0D` reached by two separate jumps (`$F94A JMP $F993`, landing mid-block, and
-  `$FA06 JMP $F961`, the block's own start) — confirmed clean throughout. **Correction (2026-10-10)**: an
-  earlier claim that the likely-data region was `$F94D`–`$F992` was imprecise; re-checked exactly, it
-  narrows to `$F94D`–`$F960` (~20 bytes) — `$F961` onward is confirmed real code, not data. Two
-  unconfirmed leads flagged for future annotation: a RIOT I/O touch (`BIT $0282`) and a small lookup table
-  at `$F910`. A two-entry-point control-flow hypothesis is now on file (first-entry skip-ahead vs. full
-  loop entry) but not yet trace-confirmed. Annotation and trace verification (rungs 2–3) still not
-  attempted — trace verification of this exact hypothesis is the clear next step.
+- **2048-2600** (`chesterbr/2048-2600`) — raw disassembly extended to four segments (rung 1): the
+  reset-vector startup routine (`$F914`–`$F94A`), the main code block (`$F961`–`$FA0D`), and the newly
+  disassembled branch target (`$FA0D`–`$FA2A`) — all confirmed clean. **Correction (2026-10-10)**: the
+  likely-data region narrows to `$F94D`–`$F960` (~20 bytes), not the originally-claimed `$F94D`–`$F992`.
+  **Trace-verified (2026-10-10, rung 3)**: the first-entry skip-ahead to `$F993` is confirmed by real
+  execution; the path back to `$F961` is confirmed to go via `$FA23`, not the previously-assumed `$FA06`
+  — a genuine correction to last cycle's own hypothesis, not just a confirmation of it. Two unconfirmed
+  leads still open for future annotation: a RIOT I/O touch (`BIT $0282`) and a small lookup table at
+  `$F910`. **Genuinely unresolved, disclosed**: whether `$F961` repeats as a per-frame loop — not observed
+  in 4,000 trace steps; `py65` has no TIA/RIOT timing model, so this may not be answerable with this
+  toolchain alone. Full annotation (rung 2, assigning meaning to routines) not yet attempted.
 
 ## Verified Disassemblies
 
-_(none yet at the "annotated + trace-verified" tier — only the raw mechanical pass exists so far, see
-above. An entry here requires the full trace-verification standard in `methods/falsification-standard.md`
-— a reproducible emulation trace, not a plausible-looking reading of the bytes.)_
+_(none yet at the full "annotated + trace-verified" tier — the raw mechanical pass and a first real
+control-flow trace both exist now (see Confirmed Findings above), but no routine has been annotated with
+an interpreted meaning yet. An entry here requires both: trace evidence (now demonstrated achievable) and
+a stated interpretation of what a routine actually does.)_
 
 ## Open Questions
 
