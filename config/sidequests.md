@@ -19,8 +19,12 @@ verified correct on a hand-assembled, fully deterministic test program — both 
 matched expected register/memory state exactly. See `data/toolchain-notes.md` and
 `logs/2026-10-09-sq1-toolchain-verification.md`. **Disclosed gap**: `py65` has no TIA/RIOT model, so it's
 sufficient for opcode-level disassembly but not yet for TIA-timing trace work — the next toolchain gap to
-close. **Rights-scoping half not yet done** — `data/rom-rights-scope.md` doesn't exist yet; a real next
-task, not rushed into this same cycle.
+close. **Rights-scoping half now done (2026-10-10)** — see `data/rom-rights-scope.md` and
+`logs/2026-10-10-sq1-rom-rights-scoping.md`. Verified directly via GitHub's API (not a search-summary
+claim): `github.com/chesterbr/2048-2600`, MIT-licensed with a named copyright holder, canonical original
+(not a fork), ships both 6502 source and a built 2048-byte ROM. Recommended as SQ-3's first target. Four
+more MIT-licensed candidates found but not yet individually verified in depth. **SQ-1 is now substantively
+complete** — both the toolchain and rights-scoping halves have real, verified evidence.
 
 ## SQ-2 — Reference documentation catalog
 
@@ -43,7 +47,16 @@ task, not rushed into this same cycle.
 
 **Deliverables:** `data/disassembly/<rom-name>/` — raw disassembly, annotated disassembly, and trace artifacts for the first analyzed ROM.
 
-**Status:** not started — blocked on SQ-1 (toolchain and rights scope) and benefits from SQ-2 (hardware reference) being underway.
+**Status (2026-10-10), first raw disassembly done — see `logs/2026-10-10-sq3-first-raw-disassembly.md`**:
+disassembled `chesterbr/2048-2600` (SQ-1's recommended target) from its reset vector (`$F914`). The first
+~20 instructions are a clean, textbook-correct match to the standard Atari 2600 startup idiom (disable
+interrupts, clear decimal mode, zero all RAM/TIA/RIOT via a stack-pointer trick) — real confirmation the
+toolchain and ROM-mapping assumptions are correct. **A genuine methodology lesson caught directly**:
+continuing the disassembly linearly past a `JMP $F993` at `$F94A` produces clear garbage until it
+resyncs exactly at the jump target — strong evidence `$F94D`–`$F992` is data, not code, and that future
+passes need to follow control flow rather than sweep linearly. Raw disassembly output committed at
+`data/disassembly/2048-2600/raw-disassembly-from-reset.txt`. This is rung 1 (raw disassembly) only — no
+annotation or trace verification yet, both disclosed as not yet attempted.
 
 ## SQ-4 — Prior-art and notable-finding catalog
 

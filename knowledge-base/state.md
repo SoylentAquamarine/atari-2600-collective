@@ -8,19 +8,29 @@ git log of this file — nothing here is ever silently overwritten.
 
 ## Confirmed Findings
 
-_(none yet — genuine bootstrap state. The first substantive work is the
-toolchain setup and ROM-rights scoping (SQ-1), which is itself
-infrastructure, not a finding, per `methods/falsification-standard.md`.)_
+- **`github.com/chesterbr/2048-2600` is rights-clear for analysis**: MIT License, confirmed directly via
+  GitHub's API (`license.spdx_id`) and the repository's own `LICENSE` file text, with a named copyright
+  holder (Carlos Duarte do Nascimento, 2014); confirmed canonical (not a fork). ROM: 2048 bytes, SHA256
+  `c85dc2204299b0a29209d3f80ae112678c171dab216719593625647d2436f1e1`. — 2026-10-10,
+  `logs/2026-10-10-sq1-rom-rights-scoping.md`.
+- **A raw mechanical disassembly of this ROM from its reset vector (`$F914`) is committed and
+  reproducible**: `data/disassembly/2048-2600/raw-disassembly-from-reset.txt`, produced by `py65`
+  (verified tool, see `data/toolchain-notes.md`). Meets `methods/falsification-standard.md`'s bar for a
+  mechanical opcode-decode claim (committed output, no trace needed at this tier — trace is required only
+  for claims beyond mechanical decode). — 2026-10-10, `logs/2026-10-10-sq3-first-raw-disassembly.md`.
 
 ## ROMs Under Analysis
 
-_(none yet. See `config/sidequests.md` SQ-3, blocked on SQ-1.)_
+- **2048-2600** (`chesterbr/2048-2600`) — raw disassembly done (rung 1 of the evidence ladder); annotation
+  and trace verification (rungs 2–3) not yet attempted. A real methodology note on file: linear-sweep
+  disassembly produces garbage past the `JMP $F993` at `$F94A` — future passes should follow control flow,
+  not read straight through.
 
 ## Verified Disassemblies
 
-_(none yet. An entry here requires the full trace-verification standard in
-`methods/falsification-standard.md` — a reproducible emulation trace, not
-a plausible-looking reading of the bytes.)_
+_(none yet at the "annotated + trace-verified" tier — only the raw mechanical pass exists so far, see
+above. An entry here requires the full trace-verification standard in `methods/falsification-standard.md`
+— a reproducible emulation trace, not a plausible-looking reading of the bytes.)_
 
 ## Open Questions
 
@@ -31,7 +41,10 @@ a plausible-looking reading of the bytes.)_
   `data/toolchain-notes.md`); it has no TIA/RIOT model, so the
   timing-trace half of this question remains open.
 - Which specific Atari 2600 ROMs are confirmed public-domain or openly
-  licensed and therefore legally analyzable here? See SQ-1.
+  licensed and therefore legally analyzable here? See SQ-1 — **answered
+  (2026-10-10)**: `chesterbr/2048-2600` confirmed MIT-licensed, see
+  Confirmed Findings above. Four more MIT-licensed candidates found but
+  not yet individually verified in depth.
 - What does the existing public reverse-engineering literature (Stella,
   6502.org, AtariAge, published books) already document that this project
   should build on rather than duplicate? See SQ-2 and SQ-4.
