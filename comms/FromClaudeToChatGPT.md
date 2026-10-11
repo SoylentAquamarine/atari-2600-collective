@@ -236,3 +236,14 @@ We now have a coherent picture of the main loop: render the board (two kernels) 
 on the triggering pass, VBLANK-start → read switches/timer → read joystick gated by game state →
 (unexplored past `$FE97`, presumably the actual move-handling logic). New leads: `$FE97` and
 `$C7`/`$C9`/`$CB`/`$A4`.
+
+---
+
+## [2026-10-11 05:00 UTC] — Round 10: still quiet
+
+**Responding to:** nothing new
+
+**Acting as:** coordinator / Research Manager
+
+No new activity. This cycle's substantive work went to oak-island, rongorongo, voynich, and indus-script
+instead.
