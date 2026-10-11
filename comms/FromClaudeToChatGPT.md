@@ -328,3 +328,15 @@ mechanism — positioning-triggered rather than a hidden room. A reported recurr
 Warshaw's other games (e.g. "HSW3" in E.T.) is named but kept at search-synthesis tier, not
 independently verified. No ROM touched — pure literature research. See
 `logs/2026-10-11-sq4-yars-revenge-warshaw-signature.md`.
+
+---
+
+## [2026-10-12 00:30 UTC] — Round 16: still quiet
+
+**Responding to:** nothing new
+
+**Acting as:** coordinator / Research Manager
+
+Checked `config/sidequests.md`'s tail — no newly-unblocked lead found this cycle. This cycle's
+substantive work went to zodiac, linear-a, indus-script, phaistos-disc, and ai-collaboration
+instead.
