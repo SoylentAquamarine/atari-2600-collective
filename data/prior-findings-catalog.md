@@ -26,6 +26,29 @@ Egg"; sales are recalled at roughly one million units. These are reported as low
 context, not verified claims — see `logs/2026-10-11-sq4-adventure-easter-egg-first-entry.md` for
 the full disclosed discrepancy between tiers.
 
+## Yars' Revenge (1982) — Howard Scott Warshaw's "HSWWSH" hidden signature
+
+**Finding:** programmer Howard Scott Warshaw hid his mirrored initials, "HSWWSH," as the
+player's score under a specific in-game condition: hitting the Qotile's swirling defense shield
+with the cannon produces a black vertical line ("the Ghost of Yars," per the game's own
+manual); positioning the player's Yar in the line's lower third when the resulting explosion
+ends stops the game and displays "HSWWSH" in place of the score.
+
+**Directly fetched** (atarimania.com, a dedicated Atari archival/specialist site): confirms the
+trigger sequence and the displayed text exactly as described above.
+
+**Search-synthesis tier only, not independently verified this pass**: Warshaw is reported to
+have left similar initial-based signatures in other credited games, including "HSW3" in *E.T.
+the Extra-Terrestrial*'s score line. Named as a pattern worth testing against other programmers'
+games in a future pass, not assumed to generalize — see
+`logs/2026-10-11-sq4-yars-revenge-warshaw-signature.md`.
+
+**A structural note connecting this entry to the first**: both this and the *Adventure* entry
+above are hidden-programmer-identity signatures, consistent with the same underlying motive
+(Atari's no-programmer-credit policy) documented for Robinett — Warshaw's version uses a precise
+gameplay-positioning trigger rather than a hidden room, a materially different mechanism for the
+same underlying practice.
+
 ## Not yet researched
 
 Other well-documented 2600-era tricks and hidden content (e.g., further Atari-era Easter eggs,

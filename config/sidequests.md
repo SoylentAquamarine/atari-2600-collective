@@ -140,8 +140,16 @@ signature, directly fetched from Robinett's own published interview (motive, mec
 outline, discovery, why Atari kept it), with two secondary-only details (the "Easter Egg"
 coinage attribution and the storage-size figure) explicitly flagged as unverified rather than
 merged into the primary account. See `data/prior-findings-catalog.md` and
-`logs/2026-10-11-sq4-adventure-easter-egg-first-entry.md`. Other well-documented 2600-era
-tricks remain uncatalogued — open for a future cycle.
+`logs/2026-10-11-sq4-adventure-easter-egg-first-entry.md`.
+
+**Update (2026-10-11, same day, second entry):** Yars' Revenge's "HSWWSH" hidden signature
+(Howard Scott Warshaw, triggered via a specific in-game positioning condition tied to the
+"Ghost of Yars" visual effect) — directly fetched from a dedicated Atari archival site. A
+structurally similar practice to Adventure's (hidden programmer identity), different mechanism.
+A reported recurring habit across Warshaw's other games ("HSW3" in E.T.) is named but kept at
+search-synthesis tier, not independently verified. See
+`logs/2026-10-11-sq4-yars-revenge-warshaw-signature.md`. Other well-documented 2600-era tricks
+remain uncatalogued — open for a future cycle.
 
 ## Initial priority
 

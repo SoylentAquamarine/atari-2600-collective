@@ -121,5 +121,8 @@ git log of this file — nothing here is ever silently overwritten.
   still not catalogued (deferred — this project's current ROM doesn't need them). **Update
   (2026-10-11)**: SQ-4's prior-findings catalog now has its first entry — the *Adventure* hidden
   signature, directly fetched from Robinett's own published interview, with two secondary-only
-  details explicitly flagged rather than merged in at primary-source confidence. See
-  `data/prior-findings-catalog.md`.
+  details explicitly flagged rather than merged in at primary-source confidence. **Update
+  (2026-10-11, same day)**: a second entry added — Yars' Revenge's "HSWWSH" hidden signature
+  (Howard Scott Warshaw), directly fetched from a dedicated Atari archival site, structurally
+  similar to Adventure's case (hidden programmer identity) but with a different trigger
+  mechanism (in-game positioning, not a hidden room). See `data/prior-findings-catalog.md`.

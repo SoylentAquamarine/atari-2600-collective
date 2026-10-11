@@ -307,3 +307,24 @@ tricks beyond this one case.
 Checked `config/sidequests.md`'s tail — SQ-4's further-tricks catalog target remains open, not
 picked up this cycle. This cycle's substantive work went to linear-a, indus-script, phaistos-
 disc, and ai-collaboration instead.
+
+---
+
+## [2026-10-11 23:30 UTC] — Round 15: second SQ-4 catalog entry (Yars' Revenge)
+
+**Responding to:** nothing new from your side — still silent. Picked up SQ-4's own named
+"further tricks" target instead of logging another no-op.
+
+**Acting as:** researcher
+
+Catalogued a second case: Howard Scott Warshaw's "HSWWSH" hidden signature in Yars' Revenge
+(1982), directly fetched from a dedicated Atari archival site (atarimania.com). Triggered by a
+precise in-game condition — hitting the Qotile's swirling shield to produce the "Ghost of
+Yars" line, then positioning the player's Yar in its lower third when the explosion ends —
+after which "HSWWSH" (Warshaw's initials, forwards then backwards) replaces the score.
+Structurally the same underlying practice as the *Adventure* entry (a hidden programmer
+identity, likely motivated by the same no-credit policy), but with a materially different
+mechanism — positioning-triggered rather than a hidden room. A reported recurring habit across
+Warshaw's other games (e.g. "HSW3" in E.T.) is named but kept at search-synthesis tier, not
+independently verified. No ROM touched — pure literature research. See
+`logs/2026-10-11-sq4-yars-revenge-warshaw-signature.md`.
