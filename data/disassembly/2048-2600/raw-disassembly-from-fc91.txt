@@ -147,5 +147,19 @@ $FDF3  CMP #$f0         ; $F0 = no direction pressed (all bits high; a pressed d
 $FDF5  BNE $fdfb
 $FDFB  LDA $a8
 $FDFD  CMP #$04
-$FDFF  BEQ $fe04
-$FE01  JMP $fe97        ; new lead, not yet disassembled
+$FDFF  BEQ $fe04        ; never taken in any trace run -- $A8 never reaches 4 under py65's conditions
+$FE01  JMP $fe97
+
+; --- $FE97: timer-wait idiom, closes the loop back to the main entry point ---
+; disassembled 2026-10-11, see 2026-10-11-sq3-fe97-timer-wait-and-dead-ram-variables.md
+$FE97  LDA $0284        ; INTIM -- hardware timer countdown read
+$FE9A  BNE $fe97        ; spin until the timer (set up in the VBLANK routine) reaches zero
+$FE9C  STA $02          ; WSYNC strobe
+$FE9E  JMP $f993        ; back to the main loop's own entry point
+
+; Confirmed by direct instrumentation (300,000-step trace, logging every write): $A4, $C7, $C9, $CB
+; are NEVER written anywhere in this trace -- they stay at py65's zero-initialized RAM default for the
+; entire run. This is why every branch gated on them (C9==0 at $FBCF, A4==0 at $FBE6, A8==4 at $FDFD)
+; is always taken the same way. Two real, specific, unexplored addresses this surfaces: $FBD1 (the
+; not-taken fall-through if C9 were nonzero) and $FE04 (the not-taken target if A8 reached 4) -- neither
+; has ever been disassembled or executed in any trace this project has run.

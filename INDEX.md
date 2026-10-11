@@ -51,7 +51,7 @@ Kept current per this project's own index-maintenance discipline (see
 - `disassembly/2048-2600/raw-disassembly-from-f961.txt` — the loop's actual entry point, corrected from an earlier imprecise resync claim
 - `disassembly/2048-2600/raw-disassembly-from-fa0d.txt` — the real, trace-confirmed branch path from `$F9F8`'s taken branch, ending at the newly-found `$FA23 JMP $F961`
 - `disassembly/2048-2600/raw-disassembly-from-fbb0.txt` — trace-order-verified disassembly of the loop body, `$FBB0`-`$FC8F`: a likely graphics-kernel routine (WSYNC strobes, playfield clears, player-sprite writes via a nibble-derived glyph-pointer table); corrects a self-caught, never-committed instruction-alignment error
-- `disassembly/2048-2600/raw-disassembly-from-fc91.txt` — continuation, `$FC91`-`$FE01`: two more pointer-table loops, a second graphics kernel, and the ROM's VBLANK-start/console-switch/joystick-input routine at `$FD97`
+- `disassembly/2048-2600/raw-disassembly-from-fc91.txt` — continuation, `$FC91`-`$FE9E`: two more pointer-table loops, a second graphics kernel, the ROM's VBLANK-start/console-switch/joystick-input routine at `$FD97`, and the timer-wait idiom at `$FE97` that closes the loop back to `$F993`
 - `hardware-reference.md` — SQ-2's deliverable: 6507/6502 differences, RIOT memory/IO ranges (SWCHA/SWCHB/timer registers), and the full TIA write-register map, cross-checked against independent sources and directly applied to the disassembly above
 
 ## `docs/` — public site (GitHub Pages, deploy on push to `main` under `docs/`)
@@ -76,6 +76,7 @@ Kept current per this project's own index-maintenance discipline (see
 - `2026-10-10-sq3-first-emulation-trace.md` — this project's first real execution trace (`py65`'s engine, not just its disassembler): confirms the first-entry skip-ahead hypothesis, but corrects the assumed path back to `$F961` (a third jump, `$FA23`, not the earlier-found `$FA06`) — rung 3 (trace-verified) evidence
 - `2026-10-10-sq3-extended-trace-and-loop-periodicity.md` — a 50,000-step extended trace confirms a real, precisely periodic loop entered at `$F993` (not `$F961`, period 2,616 steps); seeds SQ-2's hardware reference and uses it to identify a likely graphics-kernel routine; documents a self-caught, never-committed instruction-alignment error
 - `2026-10-10-sq3-vblank-and-input-routines.md` — a 200,000-step trace confirms the reachable address set is stable at 426 addresses and `$FA06` is still never taken; identifies `$FD97` as the VBLANK-start/console-switch/joystick-input routine and interprets two more zero-page variables (`$9D`, `$C6`)
+- `2026-10-11-sq3-fe97-timer-wait-and-dead-ram-variables.md` — identifies `$FE97` as a timer-wait idiom closing the loop back to `$F993`; a 300,000-step instrumented trace confirms `$A4`/`$C7`/`$C9`/`$CB` are never written in any run, explaining the control-flow branches and naming two specific, never-reached addresses (`$FBD1`, `$FE04`)
 
 ## `methods/`
 

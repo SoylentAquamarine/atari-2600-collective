@@ -59,6 +59,16 @@ git log of this file — nothing here is ever silently overwritten.
   reachable address set is stable at exactly 426 addresses from step 50,000 onward, and `$FA06` remains
   never visited. — 2026-10-10, `logs/2026-10-10-sq3-vblank-and-input-routines.md`,
   `data/disassembly/2048-2600/raw-disassembly-from-fc91.txt`.
+- **The main loop's control-flow picture is now complete end-to-end; four more zero-page variables
+  confirmed permanently unwritten, not just uninterpreted** (rung 3, directly instrumented): `$FE97`
+  (`LDA $0284; BNE $fe97; STA $02; JMP $f993`) is a timer-wait idiom — `$0284` is INTIM, the hardware
+  timer's countdown-read register — spinning until the timer set up in the VBLANK routine expires, then
+  jumping back to `$F993` to restart the loop. A 300,000-step trace, instrumented to log every write to
+  `$A4`/`$C7`/`$C9`/`$CB`, confirms none of them ever change — they stay at `py65`'s zero-initialized RAM
+  default for the entire run, explaining why every branch gated on them always goes the same way. Two
+  specific, concrete, never-reached addresses named for a future cycle: `$FBD1` (fall-through if `$C9`
+  were nonzero) and `$FE04` (target if `$A8` reached 4) — neither has ever been disassembled or executed.
+  — 2026-10-11, `logs/2026-10-11-sq3-fe97-timer-wait-and-dead-ram-variables.md`.
 
 ## ROMs Under Analysis
 

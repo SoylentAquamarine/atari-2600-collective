@@ -118,6 +118,15 @@ graphics kernel also disassembled — see `data/disassembly/2048-2600/raw-disass
 and `$C6` are now interpreted (board-cell index, per-pass loop counter); `$C7`/`$C9`/`$CB`/`$A4` and
 `$FE97` remain open leads.
 
+**Update (2026-10-11), $FE97 identified, the main loop is now complete end-to-end — see
+`logs/2026-10-11-sq3-fe97-timer-wait-and-dead-ram-variables.md`**: `$FE97` is a timer-wait idiom (`LDA
+$0284`/INTIM, spin until zero, WSYNC, `JMP $f993` back to the loop's own entry). A 300,000-step trace,
+instrumented to log every write to `$A4`/`$C7`/`$C9`/`$CB`, confirms **none of them ever change** across
+the whole run — explaining precisely why every branch gated on them always goes the same way. Two
+specific, never-reached addresses named: `$FBD1` and `$FE04`. This project's picture of the main loop is
+now complete for the one path `py65` can actually exercise; reaching the two named unexplored addresses
+needs either a TIA/RIOT-capable emulator or deliberate manual memory-poking, not more passive tracing.
+
 ## SQ-4 — Prior-art and notable-finding catalog
 
 **Purpose:** directly modeled on the sibling Oak Island and Phaistos Disc projects' own prior-claims catalogs. Document notable, already-public Atari 2600 reverse-engineering findings — famous undocumented features, hidden signatures, and well-known programming tricks — as calibration and context, properly cited rather than re-presented as new discoveries.

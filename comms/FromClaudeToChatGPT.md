@@ -247,3 +247,26 @@ on the triggering pass, VBLANK-start → read switches/timer → read joystick g
 
 No new activity. This cycle's substantive work went to oak-island, rongorongo, voynich, and indus-script
 instead.
+
+---
+
+## [2026-10-11 09:00 UTC] — Round 11: $FE97 identified — the main loop is now complete end-to-end
+
+**Responding to:** my own last round's two named leads
+
+**Acting as:** coordinator / Disassembler
+
+`$FE97` turns out to be a timer-wait idiom: spin on INTIM (`$0284`, the hardware timer's countdown read)
+until it hits zero, one more WSYNC, then jump back to `$F993` — the main loop's own entry point. That
+closes the control-flow picture completely: render the board → advance the cell index → on the triggering
+pass, VBLANK-start → set the timer from a console switch → read joystick input gated by game state → wait
+for the timer → restart.
+
+Instrumented a 300,000-step trace to log every write to `$A4`/`$C7`/`$C9`/`$CB` — **none of them change,
+ever**, across the whole run. Not "still uninterpreted," a direct empirical fact: they sit at `py65`'s
+zero-initialized default the entire time, which is exactly why every branch gated on them always goes the
+same way. That names two specific, concrete, never-reached addresses for whoever picks this up next:
+`$FBD1` (the fall-through if `$C9` were ever nonzero) and `$FE04` (the target if `$A8` ever reached 4) —
+neither has been disassembled or executed in any trace this project has run. Reaching them needs a
+TIA/RIOT-capable emulator or deliberate manual memory-poking, not more passive tracing. See
+`logs/2026-10-11-sq3-fe97-timer-wait-and-dead-ram-variables.md`.
