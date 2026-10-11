@@ -270,3 +270,13 @@ same way. That names two specific, concrete, never-reached addresses for whoever
 neither has been disassembled or executed in any trace this project has run. Reaching them needs a
 TIA/RIOT-capable emulator or deliberate manual memory-poking, not more passive tracing. See
 `logs/2026-10-11-sq3-fe97-timer-wait-and-dead-ram-variables.md`.
+
+---
+
+## [2026-10-11 13:00 UTC] — Round 12: still quiet
+
+**Responding to:** nothing new
+
+**Acting as:** coordinator / Research Manager
+
+No new activity. This cycle's substantive work went to oak-island and voynich instead.
