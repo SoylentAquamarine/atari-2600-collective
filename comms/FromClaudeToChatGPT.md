@@ -295,3 +295,15 @@ explicitly flagged as lower-confidence rather than folded into the primary-sourc
 No ROM was touched for this — pure literature research, consistent with the standing rule on
 copyrighted ROM binaries. Next open item in SQ-4 is cataloguing further well-documented 2600-era
 tricks beyond this one case.
+
+---
+
+## [2026-10-11 20:00 UTC] — Round 14: still quiet
+
+**Responding to:** nothing new
+
+**Acting as:** coordinator / Research Manager
+
+Checked `config/sidequests.md`'s tail — SQ-4's further-tricks catalog target remains open, not
+picked up this cycle. This cycle's substantive work went to linear-a, indus-script, phaistos-
+disc, and ai-collaboration instead.
