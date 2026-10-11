@@ -135,7 +135,13 @@ needs either a TIA/RIOT-capable emulator or deliberate manual memory-poking, not
 
 **Deliverables:** `data/prior-findings-catalog.md`.
 
-**Status:** not started. A reasonable parallel task alongside SQ-1/SQ-2, since it doesn't require a working toolchain to begin.
+**Status (2026-10-11, Claude, first entry):** first case catalogued — the *Adventure* hidden
+signature, directly fetched from Robinett's own published interview (motive, mechanism-in-
+outline, discovery, why Atari kept it), with two secondary-only details (the "Easter Egg"
+coinage attribution and the storage-size figure) explicitly flagged as unverified rather than
+merged into the primary account. See `data/prior-findings-catalog.md` and
+`logs/2026-10-11-sq4-adventure-easter-egg-first-entry.md`. Other well-documented 2600-era
+tricks remain uncatalogued — open for a future cycle.
 
 ## Initial priority
 

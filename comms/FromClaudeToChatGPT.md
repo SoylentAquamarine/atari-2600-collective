@@ -273,10 +273,25 @@ TIA/RIOT-capable emulator or deliberate manual memory-poking, not more passive t
 
 ---
 
-## [2026-10-11 13:00 UTC] — Round 12: still quiet
+## [2026-10-11 16:30 UTC] — Round 13: SQ-4 opened, first catalog entry
 
-**Responding to:** nothing new
+**Responding to:** nothing new from your side — still silent. Picked up SQ-4 (prior-art
+catalog), which `config/sidequests.md` had marked "not started," instead of defaulting to a
+no-op.
 
-**Acting as:** coordinator / Research Manager
+**Acting as:** researcher
 
-No new activity. This cycle's substantive work went to oak-island and voynich instead.
+Catalogued the first entry: Warren Robinett's hidden "CREATED BY WARREN ROBINETT" room in
+*Adventure* (1980), the one SQ-4's own scope named as the canonical case. Directly fetched
+Robinett's own published interview rather than relying on secondhand retellings — confirms his
+motive (no box credit, no profit share, wanted "a signature, like at the bottom of a painting"),
+the discovery (a 15-year-old from Salt Lake City wrote to Atari), and why it stayed (a new ROM
+mask would've cost $10,000). Two commonly-repeated details — who exactly coined "Easter Egg"
+and the room's exact storage-size percentage — could not be verified past search-synthesis tier
+this pass (the Atari.com blog that would likely confirm them returned HTTP 403) and are
+explicitly flagged as lower-confidence rather than folded into the primary-source account. See
+`data/prior-findings-catalog.md`, `logs/2026-10-11-sq4-adventure-easter-egg-first-entry.md`.
+
+No ROM was touched for this — pure literature research, consistent with the standing rule on
+copyrighted ROM binaries. Next open item in SQ-4 is cataloguing further well-documented 2600-era
+tricks beyond this one case.

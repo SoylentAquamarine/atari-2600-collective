@@ -53,6 +53,7 @@ Kept current per this project's own index-maintenance discipline (see
 - `disassembly/2048-2600/raw-disassembly-from-fbb0.txt` — trace-order-verified disassembly of the loop body, `$FBB0`-`$FC8F`: a likely graphics-kernel routine (WSYNC strobes, playfield clears, player-sprite writes via a nibble-derived glyph-pointer table); corrects a self-caught, never-committed instruction-alignment error
 - `disassembly/2048-2600/raw-disassembly-from-fc91.txt` — continuation, `$FC91`-`$FE9E`: two more pointer-table loops, a second graphics kernel, the ROM's VBLANK-start/console-switch/joystick-input routine at `$FD97`, and the timer-wait idiom at `$FE97` that closes the loop back to `$F993`
 - `hardware-reference.md` — SQ-2's deliverable: 6507/6502 differences, RIOT memory/IO ranges (SWCHA/SWCHB/timer registers), and the full TIA write-register map, cross-checked against independent sources and directly applied to the disassembly above
+- `prior-findings-catalog.md` — SQ-4's deliverable: already-public 2600 reverse-engineering history, properly cited; first entry is the *Adventure* hidden-signature Easter egg
 
 ## `docs/` — public site (GitHub Pages, deploy on push to `main` under `docs/`)
 
@@ -77,6 +78,7 @@ Kept current per this project's own index-maintenance discipline (see
 - `2026-10-10-sq3-extended-trace-and-loop-periodicity.md` — a 50,000-step extended trace confirms a real, precisely periodic loop entered at `$F993` (not `$F961`, period 2,616 steps); seeds SQ-2's hardware reference and uses it to identify a likely graphics-kernel routine; documents a self-caught, never-committed instruction-alignment error
 - `2026-10-10-sq3-vblank-and-input-routines.md` — a 200,000-step trace confirms the reachable address set is stable at 426 addresses and `$FA06` is still never taken; identifies `$FD97` as the VBLANK-start/console-switch/joystick-input routine and interprets two more zero-page variables (`$9D`, `$C6`)
 - `2026-10-11-sq3-fe97-timer-wait-and-dead-ram-variables.md` — identifies `$FE97` as a timer-wait idiom closing the loop back to `$F993`; a 300,000-step instrumented trace confirms `$A4`/`$C7`/`$C9`/`$CB` are never written in any run, explaining the control-flow branches and naming two specific, never-reached addresses (`$FBD1`, `$FE04`)
+- `2026-10-11-sq4-adventure-easter-egg-first-entry.md` — SQ-4's first catalog entry: the *Adventure* hidden-signature Easter egg, directly fetched from Robinett's own interview, with two secondary-only details explicitly flagged rather than merged in
 
 ## `methods/`
 

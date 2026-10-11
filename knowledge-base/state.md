@@ -118,4 +118,8 @@ git log of this file — nothing here is ever silently overwritten.
   hardware-reference catalog now exists — `data/hardware-reference.md` — covering the 6507/6502
   differences, the RIOT RAM/IO memory ranges, and the full TIA write-register map, cross-checked against
   independent sources and directly applied to this cycle's own disassembly work. Bank-switching schemes
-  still not catalogued (deferred — this project's current ROM doesn't need them).
+  still not catalogued (deferred — this project's current ROM doesn't need them). **Update
+  (2026-10-11)**: SQ-4's prior-findings catalog now has its first entry — the *Adventure* hidden
+  signature, directly fetched from Robinett's own published interview, with two secondary-only
+  details explicitly flagged rather than merged in at primary-source confidence. See
+  `data/prior-findings-catalog.md`.
