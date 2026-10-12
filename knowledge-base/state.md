@@ -125,4 +125,7 @@ git log of this file — nothing here is ever silently overwritten.
   (2026-10-11, same day)**: a second entry added — Yars' Revenge's "HSWWSH" hidden signature
   (Howard Scott Warshaw), directly fetched from a dedicated Atari archival site, structurally
   similar to Adventure's case (hidden programmer identity) but with a different trigger
-  mechanism (in-game positioning, not a hidden room). See `data/prior-findings-catalog.md`.
+  mechanism (in-game positioning, not a hidden room). **Update (2026-10-12)**: a third entry
+  added — sprite multiplexing, a general technique (not a hidden signature) — directly fetched
+  from Wikipedia and cross-checked against this project's own already-verified TIA register
+  documentation (2 player registers, 2 missiles, 1 ball). See `data/prior-findings-catalog.md`.

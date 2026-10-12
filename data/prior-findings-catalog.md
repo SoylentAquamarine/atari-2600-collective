@@ -49,9 +49,37 @@ above are hidden-programmer-identity signatures, consistent with the same underl
 gameplay-positioning trigger rather than a hidden room, a materially different mechanism for the
 same underlying practice.
 
+## Sprite multiplexing — a well-known technique, not a hidden Easter egg
+
+**Finding:** the TIA chip natively provides only 2 player-graphics registers (GRP0/GRP1), 2
+missile-enable registers (ENAM0/ENAM1), and 1 ball-enable register (ENABL) — already
+independently verified in this project's own `data/hardware-reference.md` from earlier
+disassembly-cycle work. Programmers discovered they could reposition/redraw these few hardware
+objects multiple times within a single frame (via RESP0/RESP1/RESM0/RESM1, also already
+documented in this project's own reference) to create the appearance of more simultaneous
+on-screen objects than the hardware natively holds — a technique now generally known as
+"sprite multiplexing."
+
+**Directly fetched** (Wikipedia, "Sprite multiplexing"): confirms the general mechanism was
+never an intentionally designed TIA feature — programmers discovered they could reset the chip
+mid-scanline to draw additional sprites, relying on the program tracking exactly where the
+video beam currently is; mistimed reprogramming causes objects to not appear or draw
+incorrectly.
+
+**Search-synthesis tier only, not independently verified this pass**: the 2600 ports of *Space
+Invaders* and *Galaxian* are reported to use more advanced multiplexing arrangements to exceed
+the hardware's native object count on a single scanline — no dedicated disassembly or
+programmer-interview source confirming their specific kernel structure was found this cycle.
+
+**A genuinely different kind of entry** from the first two (Adventure, Yars' Revenge): a
+general, named programming technique rather than a one-off hidden signature, and a case where
+this project's own independently-verified hardware facts from unrelated earlier work directly
+corroborate an externally-sourced technique description — see
+`logs/2026-10-12-sq4-sprite-multiplexing-third-entry.md`.
+
 ## Not yet researched
 
 Other well-documented 2600-era tricks and hidden content (e.g., further Atari-era Easter eggs,
-well-known "racing the beam" programming techniques used to create specific visual effects) are
-in scope for this catalog per `config/sidequests.md` but have not yet been researched — a
-future-cycle target.
+specific disassembly-level detail on how Space Invaders/Galaxian's own multiplexing kernels
+work) are in scope for this catalog per `config/sidequests.md` but have not yet been
+researched — a future-cycle target.

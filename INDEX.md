@@ -80,6 +80,7 @@ Kept current per this project's own index-maintenance discipline (see
 - `2026-10-11-sq3-fe97-timer-wait-and-dead-ram-variables.md` — identifies `$FE97` as a timer-wait idiom closing the loop back to `$F993`; a 300,000-step instrumented trace confirms `$A4`/`$C7`/`$C9`/`$CB` are never written in any run, explaining the control-flow branches and naming two specific, never-reached addresses (`$FBD1`, `$FE04`)
 - `2026-10-11-sq4-adventure-easter-egg-first-entry.md` — SQ-4's first catalog entry: the *Adventure* hidden-signature Easter egg, directly fetched from Robinett's own interview, with two secondary-only details explicitly flagged rather than merged in
 - `2026-10-11-sq4-yars-revenge-warshaw-signature.md` — SQ-4's second catalog entry: Yars' Revenge's "HSWWSH" hidden signature (Howard Scott Warshaw), directly fetched from a dedicated Atari archival site; a reported recurring habit across his other games named but kept at search-synthesis tier
+- `2026-10-12-sq4-sprite-multiplexing-third-entry.md` — SQ-4's third catalog entry, a general technique rather than a hidden signature: sprite multiplexing, directly fetched from Wikipedia and cross-checked against this project's own already-verified TIA register documentation
 
 ## `methods/`
 

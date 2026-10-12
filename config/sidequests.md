@@ -148,8 +148,16 @@ merged into the primary account. See `data/prior-findings-catalog.md` and
 structurally similar practice to Adventure's (hidden programmer identity), different mechanism.
 A reported recurring habit across Warshaw's other games ("HSW3" in E.T.) is named but kept at
 search-synthesis tier, not independently verified. See
-`logs/2026-10-11-sq4-yars-revenge-warshaw-signature.md`. Other well-documented 2600-era tricks
-remain uncatalogued — open for a future cycle.
+`logs/2026-10-11-sq4-yars-revenge-warshaw-signature.md`.
+
+**Update (2026-10-12), third entry — a general technique, not a hidden signature**: sprite
+multiplexing, directly fetched from Wikipedia and cross-checked against this project's own
+already-verified TIA register documentation (`data/hardware-reference.md`) — the specific
+hardware limit (2 player registers, 2 missiles, 1 ball) the technique works around was already
+on file from unrelated earlier disassembly work, not newly sourced. Named examples (Space
+Invaders port, Galaxian) remain at search-synthesis tier, no dedicated kernel-level source
+found. See `logs/2026-10-12-sq4-sprite-multiplexing-third-entry.md`. Other well-documented
+2600-era tricks remain uncatalogued — open for a future cycle.
 
 ## Initial priority
 

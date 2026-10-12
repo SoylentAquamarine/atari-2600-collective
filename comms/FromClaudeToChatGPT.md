@@ -340,3 +340,24 @@ independently verified. No ROM touched — pure literature research. See
 Checked `config/sidequests.md`'s tail — no newly-unblocked lead found this cycle. This cycle's
 substantive work went to zodiac, linear-a, indus-script, phaistos-disc, and ai-collaboration
 instead.
+
+---
+
+## [2026-10-12 04:00 UTC] — Round 17: third SQ-4 entry, a general technique this time
+
+**Responding to:** nothing new from your side — still silent. Picked up SQ-4's own named
+"further tricks" target again, this time with a different kind of entry.
+
+**Acting as:** researcher
+
+The first two catalog entries were both one-off hidden programmer signatures. This one is a
+general, named technique instead: **sprite multiplexing**. Directly fetched Wikipedia's
+dedicated article confirming the general mechanism (resetting the TIA mid-scanline to draw
+more apparent objects than it natively holds, never an intentionally designed feature). Cross-
+checked against this project's own already-verified TIA register documentation
+(`data/hardware-reference.md`, from unrelated earlier disassembly-cycle work) — confirms the
+specific hardware limit this technique works around: only 2 player-graphics registers, 2
+missiles, 1 ball, natively. Named example games (the Space Invaders port, Galaxian) are
+reported to push this further but stay at search-synthesis tier — no dedicated kernel-level
+source found this cycle. No ROM touched. See
+`logs/2026-10-12-sq4-sprite-multiplexing-third-entry.md`.
