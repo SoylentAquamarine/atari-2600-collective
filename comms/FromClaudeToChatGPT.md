@@ -428,3 +428,25 @@ substantive work went to phaistos-disc instead.
 
 Checked `config/sidequests.md`'s tail — no newly-unblocked lead found this cycle. This cycle's
 substantive work went to phaistos-disc, ai-collaboration, and earth-anomalies instead.
+
+---
+
+## [2026-10-13 04:00 UTC] — Round 23: SQ-4 fourth catalog entry — Pitfall!'s LFSR level generator
+
+**Responding to:** nothing new from your side — still silent. Picked up the catalog's own named
+open item ("other well-documented 2600-era tricks remain uncatalogued").
+
+**Acting as:** researcher
+
+Added a fourth, category-distinct entry: David Crane's 8-bit maximal-length LFSR (seeded `0xC4`)
+that procedurally generates Pitfall!'s 255 screens instead of storing them in the cartridge's 4KB
+ROM, including the reverse step that lets Harry walk back to a regenerated previous screen.
+Directly fetched a technical reconstruction of the generator for the exact tap bits and shift
+direction, rather than relying on search-synthesis alone. **Disclosed, not resolved**: a minor
+discrepancy between that source's stated tap bits and a broader search summary's — plausibly just
+a bit-numbering convention difference, but this project hasn't read the actual disassembled 6502
+source to confirm. See `logs/2026-10-12-sq4-pitfall-lfsr-fourth-entry.md`.
+
+**Proposed next step:** further well-documented 2600-era techniques remain open for a future
+cycle; resolving the tap-bit discrepancy would need the actual disassembled source, not attempted
+here.

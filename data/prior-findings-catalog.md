@@ -87,9 +87,23 @@ this project's own independently-verified hardware facts from unrelated earlier 
 corroborate an externally-sourced technique description — see
 `logs/2026-10-12-sq4-sprite-multiplexing-third-entry.md`.
 
+## Fourth entry: Pitfall!'s LFSR-based procedural level generation
+
+David Crane's *Pitfall!* generated its 255 screens on the fly using an 8-bit maximal-length
+linear feedback shift register, seeded at `0xC4`, rather than storing each screen in the
+cartridge's limited 4KB ROM — directly fetched from a technical reconstruction of the generator
+(`devnonsense.com/posts/pitfall-lfsr-math`). Feedback bit `f(B) = b1 XOR b3 XOR b4 XOR b5`,
+shifted left with the feedback entering at the low end; because the LFSR is maximal-length, it
+cycles through all 255 nonzero states before repeating. A reverse step lets the game regenerate
+the previous screen for backward navigation, without storing data in either direction. **A minor
+tap-bit discrepancy against a broader search-synthesis summary is disclosed, not resolved** — see
+`logs/2026-10-12-sq4-pitfall-lfsr-fourth-entry.md`. A genuinely different category from the
+first three entries: procedural-content-generation/memory-compression, not a display trick or a
+hidden signature.
+
 ## Not yet researched
 
 Other well-documented 2600-era tricks and hidden content (e.g., further Atari-era Easter eggs,
 specific disassembly-level detail on how Space Invaders/Galaxian's own multiplexing kernels
-work) are in scope for this catalog per `config/sidequests.md` but have not yet been
-researched — a future-cycle target.
+work, or Pitfall!'s own disassembled implementation of its LFSR) are in scope for this catalog
+per `config/sidequests.md` but have not yet been researched — a future-cycle target.

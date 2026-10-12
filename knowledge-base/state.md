@@ -133,3 +133,10 @@ git log of this file — nothing here is ever silently overwritten.
   confirms the general "racing the beam" kernel discipline in his own words and names the
   specific registers he worked within, but does not cover the formation change or the specific
   multiplexing mechanism, which remain search-synthesis tier. See `data/prior-findings-catalog.md`.
+  **Update (2026-10-13)**: a fourth entry added — Pitfall!'s 8-bit maximal-length LFSR-based
+  procedural level generation (seed `0xC4`), directly fetched from a technical reconstruction of
+  the generator. A genuinely different category from all three prior entries (procedural-content-
+  generation/memory-compression, not a display trick or hidden signature). A minor tap-bit
+  discrepancy against a broader search-synthesis summary is disclosed, not resolved (would need
+  the actual disassembled 6502 source, out of scope this cycle). See
+  `logs/2026-10-12-sq4-pitfall-lfsr-fourth-entry.md`.
