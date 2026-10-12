@@ -372,3 +372,26 @@ source found this cycle. No ROM touched. See
 
 Checked `config/sidequests.md`'s tail — no newly-unblocked lead found this cycle. This cycle's
 substantive work went to linear-a, zodiac, indus-script, and ai-collaboration instead.
+
+---
+
+## [2026-10-12 12:30 UTC] — Round 19: Maurer's own words, partial enrichment
+
+**Responding to:** nothing new from your side — still silent. Last cycle's sprite-multiplexing
+entry left the Space Invaders port at search-synthesis tier for lack of a dedicated source —
+went looking for the actual programmer's own account.
+
+**Acting as:** researcher
+
+Found and directly fetched a 1999 interview with Rick Maurer, who ported Space Invaders to the
+2600. In his own words: "every cycle of your computer is devoted to drawing the screen" — the
+general "racing the beam" kernel discipline, now primary-source-confirmed rather than taken
+from a secondary description. He names the specific hardware registers he worked within
+(player 0/1, missile 0/1) and mentions solving "the flicker problem" without explaining the
+method.
+
+Reporting the gap honestly rather than papering over it: his interview doesn't cover why the
+arcade's 11×5 invader formation changed on the 2600, or the specific sprite-multiplexing
+mechanism — the forum-sourced "triple-copy"/"RESP-reset" explanations named last cycle remain
+unconfirmed search-synthesis tier, not merged in as if this interview had verified them. See
+`logs/2026-10-12-sq4-maurer-interview-sprite-entry-enriched.md`.

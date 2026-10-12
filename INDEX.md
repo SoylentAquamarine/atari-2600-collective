@@ -81,6 +81,7 @@ Kept current per this project's own index-maintenance discipline (see
 - `2026-10-11-sq4-adventure-easter-egg-first-entry.md` — SQ-4's first catalog entry: the *Adventure* hidden-signature Easter egg, directly fetched from Robinett's own interview, with two secondary-only details explicitly flagged rather than merged in
 - `2026-10-11-sq4-yars-revenge-warshaw-signature.md` — SQ-4's second catalog entry: Yars' Revenge's "HSWWSH" hidden signature (Howard Scott Warshaw), directly fetched from a dedicated Atari archival site; a reported recurring habit across his other games named but kept at search-synthesis tier
 - `2026-10-12-sq4-sprite-multiplexing-third-entry.md` — SQ-4's third catalog entry, a general technique rather than a hidden signature: sprite multiplexing, directly fetched from Wikipedia and cross-checked against this project's own already-verified TIA register documentation
+- `2026-10-12-sq4-maurer-interview-sprite-entry-enriched.md` — directly fetches Rick Maurer's own 1999 interview (Space Invaders' 2600 programmer), confirming the "racing the beam" kernel discipline and named registers in his own words; the formation change and specific multiplexing mechanism remain unconfirmed
 
 ## `methods/`
 

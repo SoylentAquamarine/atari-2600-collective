@@ -71,6 +71,16 @@ Invaders* and *Galaxian* are reported to use more advanced multiplexing arrangem
 the hardware's native object count on a single scanline — no dedicated disassembly or
 programmer-interview source confirming their specific kernel structure was found this cycle.
 
+**Update (2026-10-12), the Space Invaders programmer's own account found and partially applied — see
+`logs/2026-10-12-sq4-maurer-interview-sprite-entry-enriched.md`**: directly fetched a 1999 interview with
+Rick Maurer, who ported Space Invaders to the 2600. In his own words: "every cycle of your computer is
+devoted to drawing the screen" — the general "racing the beam" kernel discipline, confirmed at primary-
+source tier. He names the specific hardware registers he worked within (player 0/1, missile 0/1) and
+mentions solving "the flicker problem" without explaining the method. **His interview does not cover**
+why the arcade's 11×5 invader formation changed on the 2600, or the specific sprite-multiplexing
+mechanism — the forum-sourced "triple-copy"/"RESP-reset" explanations remain unconfirmed search-synthesis
+tier, not merged in as if primary-verified.
+
 **A genuinely different kind of entry** from the first two (Adventure, Yars' Revenge): a
 general, named programming technique rather than a one-off hidden signature, and a case where
 this project's own independently-verified hardware facts from unrelated earlier work directly

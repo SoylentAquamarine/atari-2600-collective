@@ -159,6 +159,13 @@ Invaders port, Galaxian) remain at search-synthesis tier, no dedicated kernel-le
 found. See `logs/2026-10-12-sq4-sprite-multiplexing-third-entry.md`. Other well-documented
 2600-era tricks remain uncatalogued — open for a future cycle.
 
+**Update (2026-10-12, same day), Maurer's own account partially enriches this entry — see
+`logs/2026-10-12-sq4-maurer-interview-sprite-entry-enriched.md`**: directly fetched a 1999 interview with
+Rick Maurer (Space Invaders' 2600 programmer), confirming the general "racing the beam" kernel discipline
+in his own words and naming the specific registers he worked within, but his interview doesn't cover the
+formation change or the specific multiplexing mechanism — those pieces remain search-synthesis tier,
+honestly left unconfirmed rather than silently merged in.
+
 ## Initial priority
 
 Start SQ-1 first — it is a hard blocker for all actual disassembly work, since no claim can be verified without a working trace toolchain, and no ROM should be analyzed before its rights status is scoped. SQ-2 (hardware reference) and SQ-4 (prior-art catalog) can run in parallel, since neither depends on SQ-1 being finished. Do not start SQ-3 (first target disassembly) until SQ-1's toolchain is actually demonstrated working and the target ROM's rights status is confirmed clear.

@@ -128,4 +128,8 @@ git log of this file — nothing here is ever silently overwritten.
   mechanism (in-game positioning, not a hidden room). **Update (2026-10-12)**: a third entry
   added — sprite multiplexing, a general technique (not a hidden signature) — directly fetched
   from Wikipedia and cross-checked against this project's own already-verified TIA register
-  documentation (2 player registers, 2 missiles, 1 ball). See `data/prior-findings-catalog.md`.
+  documentation (2 player registers, 2 missiles, 1 ball). **Update (2026-10-12, same day)**:
+  partially enriched with Rick Maurer's own 1999 interview (Space Invaders' 2600 programmer) —
+  confirms the general "racing the beam" kernel discipline in his own words and names the
+  specific registers he worked within, but does not cover the formation change or the specific
+  multiplexing mechanism, which remain search-synthesis tier. See `data/prior-findings-catalog.md`.
