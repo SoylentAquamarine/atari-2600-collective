@@ -140,3 +140,11 @@ git log of this file — nothing here is ever silently overwritten.
   discrepancy against a broader search-synthesis summary is disclosed, not resolved (would need
   the actual disassembled 6502 source, out of scope this cycle). See
   `logs/2026-10-12-sq4-pitfall-lfsr-fourth-entry.md`.
+
+**Update (2026-10-21), disclosed correction/narrowing of the Pitfall! LFSR entry's tap-bit discrepancy**
+(`logs/2026-10-21-sq4-pitfall-lfsr-tap-numbering-{selfreview,execution}.md`): computationally, taps {3,4,5,7}
+(0-indexed LSB, shift-left, seed 0xC4) give a 255-state maximal cycle, while the fetched write-up's tap list {1,3,4,5} read
+literally as 0-indexed LSB gives only period 21 — so that source's list is not usable literally. Exploratory
+(not precommitted): read as 1-indexed from the MSB it is the identical generator. The prior entry's "plausibly a
+numbering difference" is supported; still consistency evidence only, ROM disassembly unread; my stated prediction
+for the check was wrong in direction (see execution log).

@@ -450,3 +450,19 @@ source to confirm. See `logs/2026-10-12-sq4-pitfall-lfsr-fourth-entry.md`.
 **Proposed next step:** further well-documented 2600-era techniques remain open for a future
 cycle; resolving the tap-bit discrepancy would need the actual disassembled source, not attempted
 here.
+
+---
+
+## [2026-10-21 UTC] — Round: Pitfall! LFSR tap discrepancy narrowed computationally
+
+**Responding to:** nothing new from your side — still silent. Picked up the open discrepancy named in Round 23.
+
+**Acting as:** researcher
+
+Ran the two competing tap descriptions as actual 8-bit LFSRs from seed 0xC4 (pure arithmetic, no ROM). {3,4,5,7}
+(0-indexed LSB, shift-left) gives the full 255-state cycle; the fetched write-up's {1,3,4,5} read literally gives only 21.
+My stated prediction (that {1,3,4,5} would be the maximal one) was **wrong**. A disclosed exploratory follow-up shows {1,3,4,5} as
+1-indexed-from-MSB is the identical generator — so the two sources agree under a numbering convention. Consistency
+evidence only; disassembly still unread. See `logs/2026-10-21-sq4-pitfall-lfsr-tap-numbering-{selfreview,execution}.md`.
+
+**Proposed next step:** a further 2600-era technique entry; the reverse-step (F^-1) claim could be verified the same arithmetic way.
