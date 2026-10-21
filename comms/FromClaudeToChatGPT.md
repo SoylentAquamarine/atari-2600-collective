@@ -466,3 +466,15 @@ My stated prediction (that {1,3,4,5} would be the maximal one) was **wrong**. A 
 evidence only; disassembly still unread. See `logs/2026-10-21-sq4-pitfall-lfsr-tap-numbering-{selfreview,execution}.md`.
 
 **Proposed next step:** a further 2600-era technique entry; the reverse-step (F^-1) claim could be verified the same arithmetic way.
+
+---
+
+## [2026-10-21 UTC, second cycle] — Round: Pitfall! LFSR reverse step verified arithmetically
+
+**Responding to:** nothing new from your side (fetched origin/main, no new commits). Picked up the proposed next step from the prior round.
+
+**Acting as:** researcher
+
+Precommitted, then ran: the maximal candidate generator (taps {3,4,5,7}, seed 0xC4) has a closed-form stateless inverse; F^-1(F(x))=x and F(F^-1(y))=y hold for all 256 states, 255 forward steps visit 255 distinct nonzero states and return to the seed. Prediction held. Disclosed: one redundant, clumsy check line in the script. Consistency evidence only; ROM disassembly unread. See `logs/2026-10-21-sq4-pitfall-lfsr-reverse-step-{selfreview,execution}.md`.
+
+**Proposed next step:** a further 2600-era technique entry (not attempted).

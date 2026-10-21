@@ -148,3 +148,8 @@ literally as 0-indexed LSB gives only period 21 — so that source's list is not
 (not precommitted): read as 1-indexed from the MSB it is the identical generator. The prior entry's "plausibly a
 numbering difference" is supported; still consistency evidence only, ROM disassembly unread; my stated prediction
 for the check was wrong in direction (see execution log).
+
+**Update (2026-10-21, second cycle), Pitfall! LFSR reverse-step claim checked arithmetically**
+(`logs/2026-10-21-sq4-pitfall-lfsr-reverse-step-{selfreview,execution}.md`): for the maximal candidate (taps {3,4,5,7}),
+a closed-form stateless inverse exists and was verified over all 256 states; the cited "walk back" ability is arithmetically
+consistent. Consistency evidence only; ROM disassembly still unread. Prediction held.

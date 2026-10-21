@@ -1,0 +1,7 @@
+F(0) = 0 (0 fixed point)
+F bijective on 0..255: True
+Finv(F(x)) == x for all x: True
+F(Finv(y)) == y for all y: True
+distinct nonzero states visited in 255 forward steps: 255 returned to seed: True 0 in cycle: False
+255 reverse steps from seed returns to seed: True
+walk back 9 from step10 equals forward states reversed: True

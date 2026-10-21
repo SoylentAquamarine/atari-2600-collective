@@ -92,3 +92,4 @@ Kept current per this project's own index-maintenance discipline (see
 ## `procedures/`
 
 - `README.md` — folder discipline (write from real incidents only); no procedures yet
+- `2026-10-21-sq4-pitfall-lfsr-reverse-step-selfreview.md` / `-execution.md` — arithmetic check that the maximal Pitfall! LFSR candidate has a stateless closed-form reverse step (verified on all 256 states); prediction held; consistency evidence only
