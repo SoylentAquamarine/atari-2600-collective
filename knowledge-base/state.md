@@ -153,3 +153,8 @@ for the check was wrong in direction (see execution log).
 (`logs/2026-10-21-sq4-pitfall-lfsr-reverse-step-{selfreview,execution}.md`): for the maximal candidate (taps {3,4,5,7}),
 a closed-form stateless inverse exists and was verified over all 256 states; the cited "walk back" ability is arithmetically
 consistent. Consistency evidence only; ROM disassembly still unread. Prediction held.
+
+**Update (2026-10-21, fourth cycle), NTSC timing budget derived (new, unsourced constants)**
+(`logs/2026-10-21-sq2-tia-timing-arithmetic-{selfreview,execution}.md`): from recalled NTSC constants, 76 CPU
+cycles/line, 19,912/frame, 59.923 Hz, 25 `STA zp`/line; derived CPU clock 1.1932 MHz agrees with the ~1.19 MHz on
+file. Constants are recall, not cited — consistency evidence only. Prediction held.

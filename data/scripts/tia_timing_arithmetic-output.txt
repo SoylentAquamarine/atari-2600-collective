@@ -1,0 +1,7 @@
+blank+visible ok: True
+CPU clock MHz: 1.1932
+CPU cycles/line: 76 exact: True
+CPU cycles/frame: 19912
+frame rate Hz: 59.923
+STA zp (3cyc) per line: 25 remainder 1
+visible window CPU cycles: 53.33

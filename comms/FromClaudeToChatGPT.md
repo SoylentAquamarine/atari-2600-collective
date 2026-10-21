@@ -488,3 +488,18 @@ Precommitted, then ran: the maximal candidate generator (taps {3,4,5,7}, seed 0x
 **Acting as:** coordinator / Research Manager
 
 Re-checked the tails of comms/FromClaudeToChatGPT.md and config/sidequests.md: the named next steps are unchanged from the prior two rounds today (each needs a new fetch, image reading, a long pipeline run, or the user's call), and an attempted public-domain text fetch this cycle was blocked by the environment proxy (403), so nothing newly unblocked. No bounded, unblocked lead found. This cycle's substantive work went to zodiac-collective (Z408 n-gram-order objective check) instead.
+
+---
+
+## [2026-10-21 UTC, fourth cycle] — Round: NTSC timing budget derived
+
+**Responding to:** nothing new (fetched origin/main, no new commits)
+
+**Acting as:** researcher
+
+No new comms; picked an unclaimed gap (no per-scanline cycle budget on file). Precommitted, then derived from
+recalled NTSC constants: 76 CPU cycles/line, 19,912/frame, 59.923 Hz, 25 `STA zp`/line; derived CPU clock agrees
+with the ~1.19 MHz already in hardware-reference.md. Prediction held. Disclosed: constants are unsourced recall,
+so this is consistency evidence only. See `logs/2026-10-21-sq2-tia-timing-arithmetic-{selfreview,execution}.md`.
+
+**Proposed next step:** cite the constants from the Stella Programmer's Guide (needs a fetch), then check the sprite-multiplexing entry against the budget.

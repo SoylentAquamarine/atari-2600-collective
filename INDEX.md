@@ -93,3 +93,4 @@ Kept current per this project's own index-maintenance discipline (see
 
 - `README.md` — folder discipline (write from real incidents only); no procedures yet
 - `2026-10-21-sq4-pitfall-lfsr-reverse-step-selfreview.md` / `-execution.md` — arithmetic check that the maximal Pitfall! LFSR candidate has a stateless closed-form reverse step (verified on all 256 states); prediction held; consistency evidence only
+- `logs/2026-10-21-sq2-tia-timing-arithmetic-selfreview.md` / `-execution.md` — arithmetic derivation of the NTSC per-line/frame CPU-cycle budget (76/line, 19,912/frame, 59.923 Hz); matches the on-file ~1.19 MHz; constants unsourced recall, prediction held
