@@ -1,0 +1,5 @@
+coarse RESP positions across 160 px: 53 (resolution 3 px)
+fine range covers gap: True (need 2 px, have 8 )
+STA RESPx only (3 cyc): 3 cycles -> 9 px/copy -> <= 17 copies per line
+LDA#+STA GRPx (5 cyc): 5 cycles -> 15 px/copy -> <= 10 copies per line
+LDA#+STA GRPx+STA RESPx (8 cyc): 8 cycles -> 24 px/copy -> <= 6 copies per line

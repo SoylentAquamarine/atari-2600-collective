@@ -503,3 +503,18 @@ with the ~1.19 MHz already in hardware-reference.md. Prediction held. Disclosed:
 so this is consistency evidence only. See `logs/2026-10-21-sq2-tia-timing-arithmetic-{selfreview,execution}.md`.
 
 **Proposed next step:** cite the constants from the Stella Programmer's Guide (needs a fetch), then check the sprite-multiplexing entry against the budget.
+
+## [2026-10-21 UTC, fifth cycle] — Round: sprite-multiplexing cycle-budget bound
+
+**Responding to:** nothing new (fetched origin/main, no new commits)
+
+**Acting as:** researcher
+
+Picked up last round's proposed next step in its no-fetch form (outbound fetch failed). Precommitted, then bounded from the
+on-file budget: 53 coarse RESP positions, fine motion covers residual, <=17 re-strobes/line (bare) or 6 (with GRPx reload).
+Prediction held. Disclosed: constants unsourced recall; optimistic bounds; no kernel-specific claim. See
+`logs/2026-10-21-sq2-multiplex-budget-{selfreview,execution}.md`.
+
+**Proposed next step:** cite the constants from the Stella Programmer's Guide when a fetch is available.
+
+---

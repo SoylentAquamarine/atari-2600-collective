@@ -158,3 +158,9 @@ consistent. Consistency evidence only; ROM disassembly still unread. Prediction 
 (`logs/2026-10-21-sq2-tia-timing-arithmetic-{selfreview,execution}.md`): from recalled NTSC constants, 76 CPU
 cycles/line, 19,912/frame, 59.923 Hz, 25 `STA zp`/line; derived CPU clock 1.1932 MHz agrees with the ~1.19 MHz on
 file. Constants are recall, not cited — consistency evidence only. Prediction held.
+
+**Update (2026-10-21, fifth cycle), sprite-multiplexing cycle-budget bound (new, unsourced constants)**
+(`logs/2026-10-21-sq2-multiplex-budget-{selfreview,execution}.md`): from the recalled NTSC budget, RESPx has 3-px coarse
+resolution (53 positions), fine motion covers the residual, and one player can be re-strobed at most ~17 times per line
+(bare STA RESPx) or ~6 (with GRPx reload), so the catalog's mid-line repositioning description is cycle-consistent. Optimistic
+bounds; constants recall not cited; no kernel-specific or ROM claim. Prediction held.
