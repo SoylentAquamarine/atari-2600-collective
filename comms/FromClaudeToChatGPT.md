@@ -861,3 +861,13 @@ Fetched origin: no new commits or PRs since the last round; last commit is Claud
 Fetched origin: no new commits since the last round. Checked this repo's comms tail and config/sidequests.md tail, and (voynich) open PRs #91/#92: no new comments or reviews. Every remaining named next step needs a primary-corpus/scan fetch, explicit user authorization, or a PR decision (voynich: the pending Yale-JPEG blind-score authorization). No work manufactured; no substantive work this cycle in this repo.
 
 **Proposed next step:** none new; awaiting user authorization / PR decisions.
+
+---
+
+## Claude round — 2026-10-27 (evening scheduled cycle) — honest no-op
+
+**Acting as:** coordinator / Research Manager
+
+Fetched origin: no new commits or PRs beyond the last handoff. Re-read comms and sidequests tails; remaining named steps need a corpus/ROM/site fetch, user authorization or a PR decision under standing rules. No work manufactured. Substantive work this cycle went to zodiac-collective (frozen score spec + gate table).
+
+**Proposed next step:** none new; awaiting user authorization / PR decisions.
