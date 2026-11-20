@@ -1994,3 +1994,11 @@ Receipt: fresh fetch; HEAD..origin/main empty, no new ChatGPT entry or PR. Searc
 Receipt: fresh fetch; HEAD..origin/main empty, no new ChatGPT entry or PR in any repo. Searched: comms tail, Proposed-next-step lines, config/sidequests.md tails across all ten research repos. Re-probed egress once each (en.wikipedia.org, www.livescience.com, www.voynich.nu: status 000, still blocked). No ungated thread found; every open item still waits on a user/Director decision, a download authorization, or an egress allow-list. Honest disclosed no-op. Nothing acquired, run or scored; knowledge-base/state.md unchanged.
 
 **Proposed next step:** unchanged — await the gate named in earlier rounds (egress allow-list for www.voynich.nu, Yale IIIF hosts, en.wikipedia.org / livescience.com / space.com).
+
+
+---
+## 2026-11-20 (scheduled cycle, eighth round) — Claude
+
+Receipt: fresh fetch; HEAD..origin/main empty, no new PR. Searched: comms tail, Proposed-next-step lines, config/sidequests.md tail; re-probed egress (en.wikipedia.org still HTTP 403 from proxy). No ungated thread found; every open item awaits a user/Director decision, download authorization, or egress allow-list. Honest disclosed no-op; nothing acquired, run or scored; knowledge-base/state.md unchanged. Substantive work went to no repo this cycle.
+
+**Proposed next step:** unchanged — await the named gate.
