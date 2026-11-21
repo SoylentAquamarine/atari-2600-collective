@@ -154,3 +154,17 @@ Source tier: **emulator source code, one source** (Stella `CartFA/E7/F0/3E/DPC` 
 | DPC (Pitfall II) | 2 x 4K program banks + 2K display bank (10K image) | F8 hotspots $1FF8/$1FF9 | DPC chip read $1000-$103F, write $1040-$107F; register = addr&7, function = (addr>>3)&7; US patent 4,644,495 per header |
 
 See `logs/2026-11-21-sq1-bankswitch-FA-E7-F0-3E-DPC-*.md`. Still uncatalogued: UA, 0840, CV, 4A50, CTY, X07, and the ARM-assisted families.
+
+## Bank-switching schemes UA / 0840 / CV / 4A50 / X07 (added 2026-11-21, fourth batch, append-only)
+
+Source tier: **emulator source code, one source** (Stella `CartUA/0840/CV/4A50/X07` `.cxx`/`.hxx`; source only, no ROM bytes). Not cross-checked.
+
+| Scheme | Layout | Trigger | Notes |
+|---|---|---|---|
+| UA (UA Limited) | 8K, 2 x 4K | access $0220 -> bank 0, $0240 -> bank 1 (decode addr & $1260) | UASW variant swaps; header mentions shifted Brazilian addresses $02A0/$02C0 (not code-verified). Hotspots are below $1000 |
+| 0840 (EconoBanking) | 8K, 2 x 4K | access $0800 -> bank 0, $0840 -> bank 1 (decode addr & $1840) | hotspots outside the cart window |
+| CV (Commavid) | 2K ROM + 1K RAM | no bank hotspots | 1K RAM, high write-protect flag; <=2K ROM tiled into upper half of the 4K window; 4K images embed initial RAM. RAM read/write port addresses not verified here |
+| 4A50 | 128K ROM + 32K RAM; windows $1000-$17FF (2K), $1800-$1DFF (1.5K), $1E00-$1EFF (256 B); $1F00-$1FFF fixed last ROM page | latched by data pattern (prior data & $E0 == $60) plus hotspots $0C00-$0Fxx and zero-page writes | Stella: partially implemented; one test ROM; full map not transcribed |
+| X07 | 64K, 16 x 4K | bank = (addr & $F0)>>4 when (addr & $180F) == $080D | banks 14/15 also switched by (addr & $1880)==0, bit 6 |
+
+See `logs/2026-11-21-sq1-bankswitch-UA-0840-CV-4A50-X07-*.md`. Still uncatalogued: CTY and the ARM-assisted families (CDF/BUS/DPC+).

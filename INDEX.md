@@ -98,3 +98,4 @@ Kept current per this project's own index-maintenance discipline (see
 - `logs/2026-11-21-sq1-bankswitch-stella-source-selfreview.md` / `-execution.md` — F8/F6/F4 bank-switching hotspots and sizes taken from Stella source (single-source tier); prediction held; added to `data/hardware-reference.md`
 - `logs/2026-11-21-sq1-bankswitch-3F-E0-FE-selfreview.md` / `-execution.md` — 3F/E0/FE/SuperChip bank-switching from Stella source (single-source tier); predictions held (FE refined)
 - `logs/2026-11-21-sq1-bankswitch-FA-E7-F0-3E-DPC-selfreview.md` / `-execution.md` — FA/E7/F0/3E/DPC bank-switching from Stella source (single-source tier); predictions held except E7 RAM granularity (refined); FA header/code discrepancy disclosed
+- 2026-11-21: SQ-1 bank-switching batch 4 (UA/0840/CV/4A50/X07): logs/2026-11-21-sq1-bankswitch-UA-0840-CV-4A50-X07-*.md

@@ -178,3 +178,7 @@ Added to `data/hardware-reference.md`. Tier: emulator source, single source. Pre
 ## Update 2026-11-21 (third batch) — SQ-1 bank-switching FA/E7/F0/3E/DPC catalogued from Stella source (append-only)
 
 Added to `data/hardware-reference.md`. Tier: emulator source, single source. Predictions mostly held; E7 prediction was imprecise (the $1FE8-$1FEB block is four 256-byte RAM windows, not a 1K bank) and is recorded as refined. FA: Stella's header and code disagree on a D0 switch condition; disclosed, unresolved. No earlier claim changed; no ROM data touched.
+
+## Update 2026-11-21 (fourth batch) — SQ-1 bank-switching UA/0840/CV/4A50/X07 catalogued from Stella source (append-only)
+
+Added to `data/hardware-reference.md`. Tier: emulator source, single source. Predictions held except that CV RAM port addresses and the full 4A50 hotspot map were not verified/extracted (disclosed in the execution log); 4A50 is explicitly partial in Stella. No earlier claim changed; no ROM data touched.
