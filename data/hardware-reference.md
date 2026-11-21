@@ -168,3 +168,9 @@ Source tier: **emulator source code, one source** (Stella `CartUA/0840/CV/4A50/X
 | X07 | 64K, 16 x 4K | bank = (addr & $F0)>>4 when (addr & $180F) == $080D | banks 14/15 also switched by (addr & $1880)==0, bit 6 |
 
 See `logs/2026-11-21-sq1-bankswitch-UA-0840-CV-4A50-X07-*.md`. Still uncatalogued: CTY and the ARM-assisted families (CDF/BUS/DPC+).
+
+## Batch 5 additions (2026-11-21, Stella source, single-source tier)
+- CV: read port $F000-$F3FF, write port $F400-$F7FF (one 1K RAM), ROM $F800-$FFFF; no banking (header comment).
+- 4A50: hotspot map transcribed (data-pattern-gated $0Cxx/$0Dxx/$0Exx/$0Fxx selects, $04/$05/$08/$09xx slice-bit toggles, zero-page $74/$75/$78 value-coded writes); Stella partial.
+- CTY: 8 x 4K, bank 0 = ARM code, banks 1-7 at $FF5-$FFB, $FF4 RAM load/save; 64 B RAM, write $1000-$103F, read $1040-$107F (random/tune registers).
+See `logs/2026-11-21-sq1-bankswitch-CV-4A50-CTY-*.md`. Still uncatalogued: CDF/BUS/DPC+ ARM-assisted families.

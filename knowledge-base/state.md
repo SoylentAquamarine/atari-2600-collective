@@ -182,3 +182,7 @@ Added to `data/hardware-reference.md`. Tier: emulator source, single source. Pre
 ## Update 2026-11-21 (fourth batch) — SQ-1 bank-switching UA/0840/CV/4A50/X07 catalogued from Stella source (append-only)
 
 Added to `data/hardware-reference.md`. Tier: emulator source, single source. Predictions held except that CV RAM port addresses and the full 4A50 hotspot map were not verified/extracted (disclosed in the execution log); 4A50 is explicitly partial in Stella. No earlier claim changed; no ROM data touched.
+
+## Update 2026-11-21 (fifth batch) — CV ports, 4A50 map, CTY (append-only)
+
+Closes two batch-4 caveats: CV port addresses now taken from Stella's header ($F000 read / $F400 write, 13-bit $1000/$1400) and the 4A50 hotspot map transcribed (still partial in Stella). CTY catalogued. Tier: emulator source, single source; predictions held (4A50 map was more extractable than predicted). No earlier claim changed; no ROM data touched. See execution log.

@@ -99,3 +99,4 @@ Kept current per this project's own index-maintenance discipline (see
 - `logs/2026-11-21-sq1-bankswitch-3F-E0-FE-selfreview.md` / `-execution.md` — 3F/E0/FE/SuperChip bank-switching from Stella source (single-source tier); predictions held (FE refined)
 - `logs/2026-11-21-sq1-bankswitch-FA-E7-F0-3E-DPC-selfreview.md` / `-execution.md` — FA/E7/F0/3E/DPC bank-switching from Stella source (single-source tier); predictions held except E7 RAM granularity (refined); FA header/code discrepancy disclosed
 - 2026-11-21: SQ-1 bank-switching batch 4 (UA/0840/CV/4A50/X07): logs/2026-11-21-sq1-bankswitch-UA-0840-CV-4A50-X07-*.md
+- 2026-11-21: SQ-1 bank-switching batch 5 (CV ports, 4A50 map, CTY): logs/2026-11-21-sq1-bankswitch-CV-4A50-CTY-*.md
