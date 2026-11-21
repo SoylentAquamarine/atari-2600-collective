@@ -140,3 +140,17 @@ Source tier: **emulator source code, one source** (Stella `Cart3F`, `CartE0`, `C
 | F8SC / F6SC / F4SC | as F8 / F6 / F4 | as F8 / F6 / F4 | plus 128 B RAM: write $1000-$107F, read $1080-$10FF |
 
 See `logs/2026-11-21-sq1-bankswitch-3F-E0-FE-*.md`. Still uncatalogued: FA, E7, F0, 3E, DPC, others.
+
+## Bank-switching schemes FA / E7 / F0 / 3E / DPC (added 2026-11-21, third batch, append-only)
+
+Source tier: **emulator source code, one source** (Stella `CartFA/E7/F0/3E/DPC` `.cxx`/`.hxx`, raw.githubusercontent.com; source only, no ROM bytes). Not cross-checked.
+
+| Scheme | Layout | Trigger | Notes |
+|---|---|---|---|
+| FA (CBS RAM Plus) | 12K, three 4K banks, start bank 2 | access $1FF8-$1FFA -> bank 0-2 | 256 B RAM: write $1000-$10FF, read $1100-$11FF. Header says D0 of value must be 1; code has that test commented out (discrepancy) |
+| E7 (M-Network) | 2K segments; last 2K fixed; 8K/12K/16K variants | $1FE0-$1FE6 select ROM bank for $1000-$17FF; $1FE7 maps 1K RAM there (write $1000-$13FF, read $1400-$17FF) | $1FE8-$1FEB select one of four 256 B RAM blocks at $1800-$19FF (write $1800-$18FF, read $1900-$19FF) |
+| F0 (Megaboy) | 16 x 4K = 64K, start bank 15 | any access to $1FF0 -> next bank, wraps | sequential only; no arbitrary jump |
+| 3E | 3F plus RAM; last 2K fixed | write to $3F: ROM bank (value) into first 2K segment; write to $3E: RAM bank into it | 32 x 1K RAM banks (32K); up to 512K ROM |
+| DPC (Pitfall II) | 2 x 4K program banks + 2K display bank (10K image) | F8 hotspots $1FF8/$1FF9 | DPC chip read $1000-$103F, write $1040-$107F; register = addr&7, function = (addr>>3)&7; US patent 4,644,495 per header |
+
+See `logs/2026-11-21-sq1-bankswitch-FA-E7-F0-3E-DPC-*.md`. Still uncatalogued: UA, 0840, CV, 4A50, CTY, X07, and the ARM-assisted families.

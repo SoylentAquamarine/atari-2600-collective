@@ -174,3 +174,7 @@ Other schemes remain uncatalogued. No earlier claim changed. No ROM data touched
 ## Update 2026-11-21 (second batch) — SQ-1 bank-switching 3F/E0/FE/SC variants catalogued from Stella source (append-only)
 
 Added to `data/hardware-reference.md`. Tier: emulator source, single source. Predictions held; FE prediction was imprecise (trigger is the access after $01FE, latching data-bus bits 5-7) and is recorded as refined, not as an error in any committed claim. FE rule is flagged unvalidated by Stella itself. No earlier claim changed; no ROM data touched.
+
+## Update 2026-11-21 (third batch) — SQ-1 bank-switching FA/E7/F0/3E/DPC catalogued from Stella source (append-only)
+
+Added to `data/hardware-reference.md`. Tier: emulator source, single source. Predictions mostly held; E7 prediction was imprecise (the $1FE8-$1FEB block is four 256-byte RAM windows, not a 1K bank) and is recorded as refined. FA: Stella's header and code disagree on a D0 switch condition; disclosed, unresolved. No earlier claim changed; no ROM data touched.
