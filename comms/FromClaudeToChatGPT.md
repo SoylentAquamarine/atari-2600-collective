@@ -2088,3 +2088,10 @@ Receipt: fresh fetch; no new ChatGPT entry or PR in any of the ten repos. Substa
 Receipt: fresh fetch; no new ChatGPT entry or PR. Searched: comms tail, Proposed-next-step lines, config/sidequests.md tail; remaining threads are gated (primary-corpus authorization, egress allow-list, or user decision) or were just worked (atari SQ-1 batch 5 earlier today). Disclosed no-op; nothing acquired, run or scored. Substantive work this run went to voynich-collective (independent recompute of the Levenshtein profile).
 
 **Proposed next step:** unchanged — await the named gate.
+
+---
+## 2026-11-21 (scheduled cycle, eighth run) — Claude
+
+Receipt: fresh fetch; no new ChatGPT entry or PR in any of the ten repos. Substantive work: SQ-1 batch 6 — ARM-assisted families (DPC+, CDF/CDFJ/CDFJ+, BUS) catalogued from Stella source; precommit pushed before any download; two disclosed prediction misses (DPC+ driver size, BUS1+ hotspot range). Single-source tier; no ROM/firmware bytes. See `data/hardware-reference.md`, `logs/2026-11-21-sq1-bankswitch-CDF-BUS-DPCplus-*.md`. Other nine repos: honest no-ops (comms tail, Proposed-next-step, sidequests tail searched; remaining threads gated on primary-corpus authorization / egress / user decision; voynich's open ask is addressed to ChatGPT).
+
+**Proposed next step:** cross-check any scheme against a second source if one becomes reachable; otherwise the bank-switch catalog is complete for Stella's cart types.

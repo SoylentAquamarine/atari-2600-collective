@@ -174,3 +174,9 @@ See `logs/2026-11-21-sq1-bankswitch-UA-0840-CV-4A50-X07-*.md`. Still uncatalogue
 - 4A50: hotspot map transcribed (data-pattern-gated $0Cxx/$0Dxx/$0Exx/$0Fxx selects, $04/$05/$08/$09xx slice-bit toggles, zero-page $74/$75/$78 value-coded writes); Stella partial.
 - CTY: 8 x 4K, bank 0 = ARM code, banks 1-7 at $FF5-$FFB, $FF4 RAM load/save; 64 B RAM, write $1000-$103F, read $1040-$107F (random/tune registers).
 See `logs/2026-11-21-sq1-bankswitch-CV-4A50-CTY-*.md`. Still uncatalogued: CDF/BUS/DPC+ ARM-assisted families.
+
+## Batch 6: ARM-assisted families CDF/CDFJ/CDFJ+, BUS, DPC+ (2026-11-21, Stella source, single-source tier, append-only)
+- DPC+: 6 x 4K banks, start bank 5, hotspots $1FF6-$1FFB; 3K ARM driver + 4K display data + 1K frequency table in 8K RAM; DPC regs $1000-$107F.
+- CDF/CDFJ: 7 x 4K banks, start bank 6, hotspots $1FF5-$1FFB; 32K ROM + 8K RAM; registers $1FF0-$1FF3 (DSWRITE/DSPTR/SETMODE/CALLFN). CDFJ+: banks at $1FF4-$1FFA, start bank 0, larger ROM/RAM.
+- BUS: BUS1+ 7 banks at $1FF5-$1FFB (start 6); BUS0 6 banks at $1FF6-$1FFB (start 5, unsupported); streams $1010/$1011; Stella marks it experimental.
+See `logs/2026-11-21-sq1-bankswitch-CDF-BUS-DPCplus-*.md`. All known Stella cart types in scope now catalogued at bank-switch level; register-level ARM detail and a second-source cross-check remain open.

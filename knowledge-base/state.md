@@ -186,3 +186,7 @@ Added to `data/hardware-reference.md`. Tier: emulator source, single source. Pre
 ## Update 2026-11-21 (fifth batch) — CV ports, 4A50 map, CTY (append-only)
 
 Closes two batch-4 caveats: CV port addresses now taken from Stella's header ($F000 read / $F400 write, 13-bit $1000/$1400) and the 4A50 hotspot map transcribed (still partial in Stella). CTY catalogued. Tier: emulator source, single source; predictions held (4A50 map was more extractable than predicted). No earlier claim changed; no ROM data touched. See execution log.
+
+## Update 2026-11-21 (sixth batch) — ARM-assisted families CDF/CDFJ/CDFJ+, BUS, DPC+ (append-only)
+
+Catalogued bank-switch hotspots, bank counts, start banks and RAM/driver layouts from Stella source (single-source tier; no ROM/firmware bytes). Predictions: DPC+ and CDF bank ranges held; two misses disclosed — DPC+ ARM driver is 3K not 8K, and BUS1+ hotspots are $1FF5-$1FFB (not $1FF6-$1FFC). Stella marks BUS experimental. Register-level ARM detail and a second-source cross-check remain open. No earlier claim changed. See `data/hardware-reference.md`, `logs/2026-11-21-sq1-bankswitch-CDF-BUS-DPCplus-*.md`.
