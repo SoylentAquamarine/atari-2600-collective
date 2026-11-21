@@ -127,3 +127,16 @@ Pattern: each scheme is a direct extension of the previous (F6 extends F8, F4 ex
 comments), with the hotspot block starting at $1FF4/$1FF6/$1FF8 and ending in the top of the 4K window. The switch fires on
 access to the hotspot address (F8 header notes reads and writes). Other schemes (3F, E0, FE, etc.) still uncatalogued.
 See `logs/2026-11-21-sq1-bankswitch-stella-source-selfreview.md` / `-execution.md`.
+
+## Bank-switching schemes 3F / E0 / FE / SuperChip (F8SC, F6SC, F4SC) (added 2026-11-21, append-only)
+
+Source tier: **emulator source code, one source** (Stella `Cart3F`, `CartE0`, `CartFE`, `CartF8SC/F6SC/F4SC`, `.cxx`/`.hxx`, raw.githubusercontent.com; source only, no ROM bytes). Not cross-checked.
+
+| Scheme | Segmentation | Trigger | Rule in Stella code |
+|---|---|---|---|
+| 3F (Tigervision) | two 2K segments; last 2K fixed to ROM's last 2K | any write to $00-$3F (TIA window; $3F canonical) | first-segment bank = `value % bankCount`; up to 512K per header |
+| E0 (Parker Bros, 8K) | four 1K segments; 4th fixed to last 1K | access $1FE0-$1FE7 / $1FE8-$1FEF / $1FF0-$1FF7 | segment 0/1/2 bank = `address & 7`; default banks 4/5/6 at reset |
+| FE (Activision) | two 4K banks in all known carts (design allowed 8) | access to $01FE, then the *next* bus access | bank = `(databus >> 5) ^ 7`; effectively low bit only; flagged unvalidated on real hardware |
+| F8SC / F6SC / F4SC | as F8 / F6 / F4 | as F8 / F6 / F4 | plus 128 B RAM: write $1000-$107F, read $1080-$10FF |
+
+See `logs/2026-11-21-sq1-bankswitch-3F-E0-FE-*.md`. Still uncatalogued: FA, E7, F0, 3E, DPC, others.

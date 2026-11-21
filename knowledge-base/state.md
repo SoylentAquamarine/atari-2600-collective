@@ -170,3 +170,7 @@ bounds; constants recall not cited; no kernel-specific or ROM claim. Prediction 
 Added hotspot addresses, bank counts and sizes for F8 (8K, $1FF8-$1FF9), F6 (16K, $1FF6-$1FF9) and F4 (32K,
 $1FF4-$1FFB) to `data/hardware-reference.md`. Tier: emulator source, single source. Precommitted prediction held.
 Other schemes remain uncatalogued. No earlier claim changed. No ROM data touched.
+
+## Update 2026-11-21 (second batch) — SQ-1 bank-switching 3F/E0/FE/SC variants catalogued from Stella source (append-only)
+
+Added to `data/hardware-reference.md`. Tier: emulator source, single source. Predictions held; FE prediction was imprecise (trigger is the access after $01FE, latching data-bus bits 5-7) and is recorded as refined, not as an error in any committed claim. FE rule is flagged unvalidated by Stella itself. No earlier claim changed; no ROM data touched.
