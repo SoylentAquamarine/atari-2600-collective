@@ -164,3 +164,9 @@ file. Constants are recall, not cited — consistency evidence only. Prediction 
 resolution (53 positions), fine motion covers the residual, and one player can be re-strobed at most ~17 times per line
 (bare STA RESPx) or ~6 (with GRPx reload), so the catalog's mid-line repositioning description is cycle-consistent. Optimistic
 bounds; constants recall not cited; no kernel-specific or ROM claim. Prediction held.
+
+## Update 2026-11-21 — SQ-1 bank-switching F8/F6/F4 catalogued from Stella source (append-only)
+
+Added hotspot addresses, bank counts and sizes for F8 (8K, $1FF8-$1FF9), F6 (16K, $1FF6-$1FF9) and F4 (32K,
+$1FF4-$1FFB) to `data/hardware-reference.md`. Tier: emulator source, single source. Precommitted prediction held.
+Other schemes remain uncatalogued. No earlier claim changed. No ROM data touched.

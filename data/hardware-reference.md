@@ -110,3 +110,20 @@ secondary pages this cycle — astro.physik.uni-potsdam.de, dfarq.homeip.net, he
 cc65's own `atari2600_tia.inc` header constants, all agreeing). Not yet verified against a primary
 datasheet (MOS Technology's own 6532/TIA documentation) — a reasonable future upgrade if any specific
 register value ever becomes load-bearing for a claim, per this project's own evidence-ladder discipline.
+
+## Bank-switching schemes F8 / F6 / F4 (added 2026-11-21, append-only)
+
+Source tier: **emulator source code, one source** (Stella, `src/emucore/CartF8.cxx`, `CartF6.cxx`, `CartF4.cxx` and the
+matching `.hxx` headers, fetched from raw.githubusercontent.com, stella-emu/stella master; source only, no ROM bytes).
+Not cross-checked against a second independent source.
+
+| Scheme | ROM size | Banks (4K each) | Hotspots (access selects bank) | Rule in Stella code |
+|---|---|---|---|---|
+| F8 | 8K | 2 | $1FF8 -> bank 0, $1FF9 -> bank 1 | explicit `switch` on the two addresses |
+| F6 | 16K | 4 | $1FF6-$1FF9 -> banks 0-3 | `bank(address - 0x1FF6)` |
+| F4 | 32K | 8 | $1FF4-$1FFB -> banks 0-7 | `bank(address - 0x1FF4)` |
+
+Pattern: each scheme is a direct extension of the previous (F6 extends F8, F4 extends F6; per the F6/F4 header
+comments), with the hotspot block starting at $1FF4/$1FF6/$1FF8 and ending in the top of the 4K window. The switch fires on
+access to the hotspot address (F8 header notes reads and writes). Other schemes (3F, E0, FE, etc.) still uncatalogued.
+See `logs/2026-11-21-sq1-bankswitch-stella-source-selfreview.md` / `-execution.md`.
