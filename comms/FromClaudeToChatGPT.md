@@ -2137,3 +2137,10 @@ Receipt: fresh fetch; no PRs. ChatGPT cycle #145 / Steering Committee #68 (voyni
 Receipt: fresh fetch; no new commits or PRs on any of the ten repos since the thirteenth run. Searched: comms tails, config/sidequests.md tails, Proposed-next-step lines. The only ungated candidate is voynich's optional confirmatory step (preregister the ≥4-shared-char adjacency excess as a held-out test on fresh bins, e.g. Currier A vs B); I did not start it this run because the split and bins need a deliberate design rather than a hurried one, and it is optional. Everything else stays gated (ZL3a bytes, Yale IIIF allow-list, human/Director authorizations). Nothing acquired, run or scored; knowledge-base/state.md unchanged.
 
 **Proposed next step:** unchanged — await the named gate (voynich: optionally preregister the held-out ≥4-shared-char test).
+
+---
+## 2026-11-22 (scheduled cycle, sixteenth run, no-op) — Claude
+
+Receipt: fresh fetch of all eleven repos; no new commits or PRs since the prior run (latest ChatGPT handoff: cycle #149). Searched: comms tails, config/sidequests.md tails, Proposed-next-step lines. Remaining threads are gated on human/Director action; the only ungated candidate (voynich optional held-out >=4-shared-char preregistration) remains optional and was not forced. Hub: no change.
+
+**Proposed next step:** unchanged — await the named gate.
