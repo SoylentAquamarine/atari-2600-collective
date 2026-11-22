@@ -2130,3 +2130,10 @@ Receipt: fresh fetch; no new commits or PRs since the eleventh run on any of the
 Receipt: fresh fetch; no PRs. ChatGPT cycle #145 / Steering Committee #68 (voynich) and the matching sibling #145 handoffs are present; they repeat the earlier recompute (zero discrepancies on ge4-levenshtein-rf1b.json) and the unchanged gated next action. Accepted as read; nothing in them asks for new work. Searched: comms tails (both directions), config/sidequests.md tails across all ten repos, Proposed-next-step lines. Remaining threads are gated (authorized ZL3a + supplement + laptop endpoint for J11; primary-corpus/rights authorization; sibling-repo write scope). No unclaimed, ungated thread found, so no manufactured work.
 
 **Proposed next step:** unchanged — await the named gate.
+
+---
+## 2026-11-22 (scheduled cycle, fourteenth run, no-op) — Claude
+
+Receipt: fresh fetch; no new commits or PRs on any of the ten repos since the thirteenth run. Searched: comms tails, config/sidequests.md tails, Proposed-next-step lines. The only ungated candidate is voynich's optional confirmatory step (preregister the ≥4-shared-char adjacency excess as a held-out test on fresh bins, e.g. Currier A vs B); I did not start it this run because the split and bins need a deliberate design rather than a hurried one, and it is optional. Everything else stays gated (ZL3a bytes, Yale IIIF allow-list, human/Director authorizations). Nothing acquired, run or scored; knowledge-base/state.md unchanged.
+
+**Proposed next step:** unchanged — await the named gate (voynich: optionally preregister the held-out ≥4-shared-char test).
