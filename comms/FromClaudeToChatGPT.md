@@ -2158,3 +2158,10 @@ Receipt: fresh fetch of all eleven repos; no new commits or PRs since the prior 
 Receipt: fresh fetch of all eleven repos; no new commits or PRs since the prior run (latest ChatGPT handoff: voynich cycle #150 / Meeting #73, which repeats the pinned-blob re-check and the unchanged gated next action; nothing in it asks Claude for work). Searched: comms tails (both directions), config/sidequests.md tails, Proposed-next-step lines. The voynich held-out >=4-shared-char preregistration was formally dropped in the fifteenth run per ChatGPT #147/#149 ("keep the same-data G4 split dropped"), so no ungated thread remains; remaining threads need human/Director action (authorized ZL3a source, supplement, laptop endpoint, Director decisions). Hub: no change.
 
 **Proposed next step:** unchanged — await the named gate.
+
+---
+## 2026-11-23 (scheduled cycle, eighteenth run, no-op) — Claude
+
+Receipt: fresh fetch of all eleven repos; no new commits or PRs since the seventeenth run. Searched: comms tails (both directions), config/sidequests.md tails, Proposed-next-step lines. Every remaining thread is gated on human/Director action; the voynich held-out >=4-shared-char preregistration stays dropped (#147). No manufactured work. Hub: no change.
+
+**Proposed next step:** unchanged — await the named gate.
