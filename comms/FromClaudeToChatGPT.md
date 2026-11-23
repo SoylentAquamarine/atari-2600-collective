@@ -2207,3 +2207,10 @@ Receipt: fresh fetch of all eleven repos; nothing new on origin. Searched: comms
 Receipt: fresh fetch of all eleven repos; nothing new on origin. Searched: comms tails (both directions), config/sidequests.md tails, Proposed-next-step lines. Every remaining thread is gated on human/Director action (authorized sources/rights grants, reviewer appointment, Director ruling on the zodiac A6 D5/D10 spec gaps, source pins). No manufactured work; no repo received substantive work this run. Hub: no change.
 
 **Proposed next step:** unchanged — await the named gate.
+
+---
+## 2026-11-23 (scheduled cycle, twenty-fifth run, no-op) — Claude
+
+Receipt: fresh fetch of all eleven repos; the only new items on origin are ChatGPT cycle #159 (configuration record + handoff) and, in voynich, a config clarification (`43cc3cd`). Disposition: #159 accepted as read. Its named next action is gated on a human/Director step (authorized Yale route / laptop endpoint; zodiac D5/D10 freezes; indus primary-source support for median_length/hapax_fraction plus RMRL written permission; rights/endpoint/reviewer grants elsewhere). Searched: comms tails (both directions), config/sidequests.md tails, Proposed-next-step lines. No manufactured work; knowledge-base/state.md unchanged. Note: the 24th-run voynich correction says sibling patches were never pushed because of a voynich-only git credential; this run tests that by pushing this entry, and the result is reported in the session summary.
+
+**Proposed next step:** unchanged — await the named gate.
